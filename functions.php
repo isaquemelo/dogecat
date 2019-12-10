@@ -271,6 +271,125 @@ function odin_stylesheet_uri( $uri, $dir ) {
 
 add_filter( 'stylesheet_uri', 'odin_stylesheet_uri', 10, 2 );
 
+
+
+// Register Custom Post Types
+function custom_animal_type() {
+
+	$labels = array(
+		'name'                  => _x( 'Animais', 'Post Type General Name', 'odin' ),
+		'singular_name'         => _x( 'Animal', 'Post Type Singular Name', 'odin' ),
+		'menu_name'             => __( 'Animais', 'odin' ),
+		'name_admin_bar'        => __( 'Animais', 'odin' ),
+		'archives'              => __( 'Animais arquivados', 'odin' ),
+		'attributes'            => __( 'Item Attributes', 'odin' ),
+		'parent_item_colon'     => __( '', 'odin' ),
+		'all_items'             => __( 'Todos os itens', 'odin' ),
+		'add_new_item'          => __( 'Adicionar novo item', 'odin' ),
+		'add_new'               => __( 'Adicionar Animal', 'odin' ),
+		'new_item'              => __( 'Novo animal', 'odin' ),
+		'edit_item'             => __( 'Editar item', 'odin' ),
+		'update_item'           => __( 'Atualizar item', 'odin' ),
+		'view_item'             => __( 'Ver item', 'odin' ),
+		'view_items'            => __( 'Ver itens', 'odin' ),
+		'search_items'          => __( 'Buscar animal', 'odin' ),
+		'not_found'             => __( 'Não encontrado', 'odin' ),
+		'not_found_in_trash'    => __( 'Não encontrado na lixeira', 'odin' ),
+		'featured_image'        => __( 'Imagem destacada', 'odin' ),
+		'set_featured_image'    => __( 'Definir imagem destacada', 'odin' ),
+		'remove_featured_image' => __( 'Remover imagem destacada', 'odin' ),
+		'use_featured_image'    => __( 'Usar como imagem destacada', 'odin' ),
+		'insert_into_item'      => __( 'Adicionar a este item', 'odin' ),
+		'uploaded_to_this_item' => __( 'Subidos por este item', 'odin' ),
+		'items_list'            => __( 'Lista de itens', 'odin' ),
+		'items_list_navigation' => __( 'Items list navigation', 'odin' ),
+		'filter_items_list'     => __( 'Filtrar itens da lista', 'odin' ),
+	);
+	$args = array(
+		'label'                 => __( 'Animal', 'odin' ),
+		'labels'                => $labels,
+		'supports'              => array( 'custom-fields' ),
+		'hierarchical'          => false,
+		'public'                => true,
+		'show_ui'               => true,
+		'show_in_menu'          => true,
+		'menu_position'         => 5,
+		'menu_icon'             => 'dashicons-buddicons-activity',
+		'show_in_admin_bar'     => true,
+		'show_in_nav_menus'     => true,
+		'can_export'            => true,
+		'has_archive'           => true,
+		'exclude_from_search'   => false,
+		'publicly_queryable'    => true,
+		'capability_type'       => 'page',
+		'show_in_rest'          => true,
+	);
+	register_post_type( 'animal', $args );
+
+}
+
+function custom_consulta_type() {
+
+	$labels = array(
+		'name'                  => _x( 'Consultas', 'Post Type General Name', 'odin' ),
+		'singular_name'         => _x( 'Consulta', 'Post Type Singular Name', 'odin' ),
+		'menu_name'             => __( 'Consultas', 'odin' ),
+		'name_admin_bar'        => __( 'Consultas', 'odin' ),
+		'archives'              => __( 'Consultas arquivadas', 'odin' ),
+		'attributes'            => __( 'Item Attributes', 'odin' ),
+		'parent_item_colon'     => __( '', 'odin' ),
+		'all_items'             => __( 'Todos os itens', 'odin' ),
+		'add_new_item'          => __( 'Adicionar novo item', 'odin' ),
+		'add_new'               => __( 'Adicionar consulta', 'odin' ),
+		'new_item'              => __( 'Novo consulta', 'odin' ),
+		'edit_item'             => __( 'Editar item', 'odin' ),
+		'update_item'           => __( 'Atualizar item', 'odin' ),
+		'view_item'             => __( 'Ver item', 'odin' ),
+		'view_items'            => __( 'Ver itens', 'odin' ),
+		'search_items'          => __( 'Buscar consulta', 'odin' ),
+		'not_found'             => __( 'Não encontrado', 'odin' ),
+		'not_found_in_trash'    => __( 'Não encontrado na lixeira', 'odin' ),
+		'featured_image'        => __( 'Imagem destacada', 'odin' ),
+		'set_featured_image'    => __( 'Definir imagem destacada', 'odin' ),
+		'remove_featured_image' => __( 'Remover imagem destacada', 'odin' ),
+		'use_featured_image'    => __( 'Usar como imagem destacada', 'odin' ),
+		'insert_into_item'      => __( 'Adicionar a este item', 'odin' ),
+		'uploaded_to_this_item' => __( 'Subidos por este item', 'odin' ),
+		'items_list'            => __( 'Lista de itens', 'odin' ),
+		'items_list_navigation' => __( 'Items list navigation', 'odin' ),
+		'filter_items_list'     => __( 'Filtrar itens da lista', 'odin' ),
+	);
+	$args = array(
+		'label'                 => __( 'Consulta', 'odin' ),
+		'labels'                => $labels,
+		'supports'              => array( 'custom-fields' ),
+		'hierarchical'          => false,
+		'public'                => true,
+		'show_ui'               => true,
+		'show_in_menu'          => true,
+		'menu_position'         => 5,
+		'menu_icon'             => 'dashicons-buddicons-activity',
+		'show_in_admin_bar'     => true,
+		'show_in_nav_menus'     => true,
+		'can_export'            => true,
+		'has_archive'           => true,
+		'exclude_from_search'   => false,
+		'publicly_queryable'    => true,
+		'capability_type'       => 'page',
+		'show_in_rest'          => true,
+	);
+	register_post_type( 'consulta', $args );
+
+}
+
+add_action( 'init', 'custom_animal_type', 0 );
+add_action( 'init', 'custom_consulta_type', 0 );
+
+
+
+
+
+
 /**
  * Query WooCommerce activation
  *
