@@ -1,12 +1,65 @@
 /**
  * Custom login styles.
- */
+*/
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap');
+
+.login {
+	background: url('../images/bone.png') center top no-repeat !important;
+	display: flex;
+}
+
+div#login {
+    background: white;
+    padding-top: 0px;
+    padding: 24px 46px;
+    border: 1px solid #00000030;
+    border-radius: 7px;
+}
+
 .login h1 a {
-	background: url('../images/logo-login.png') center top no-repeat !important;
-	background: url('../images/logo-login.svg') center top no-repeat !important;
-	background-size: 80px 80px !important;
-	height: 80px !important;
-	width: 80px !important;
+	background: url(../images/logo-login.png);
+    background-size: cover;
+    height: 160px !important;
+    width: 235px !important;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.login .message {
+	border-color: #f9bb4b;
+}
+
+.login form {
+	border: 0px;
+    padding: 0px;
+    font-family: 'Roboto', sans-serif!important;
+}
+
+.login form input.input {
+	padding: 9px;
+    font-size: 16px;
+    background: white!important;
+}
+
+.login form input.input:focus  {
+
+	border: 3px solid #f9bb4b;
+	box-shadow: none;
+
+}
+
+.login #backtoblog, .login #nav {
+	padding: 0px;
+}
+
+#login .button.button-primary {
+	background: #f9bb4b;
+	border: none;
+	font-weight: 800;
+}
+
+
+#login .dashicons{
+	color: #f9bb4b!important;
 }
 
 /**

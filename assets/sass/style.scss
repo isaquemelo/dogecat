@@ -2,13 +2,22 @@
 // Theme Style Main
 // ==========================================================================
 
-/*!
-Theme Name: Odin
-Author URI: http://wpod.in/
-Description: Odin main stylesheet.
-Author: the Odin team
-Author URI: http://wpod.in/#colaboradores
+/*
+Theme Name: Dog&Cat Feliz
+Theme URI: https://github.com/isaquemelo/dogecat
+Description: Tema desolvido para Dog&Cat Feliz
+Author: Isaque Melo
+Author URI: @isaquemelo
+Version: 1.0.0
+Tags: light, gray, white, one-column, two-columns, right-sidebar, flexible-width, custom-background, custom-header, custom-menu, editor-style, featured-images, flexible-header, full-width-template, post-formats, sticky-post, theme-options, translation-ready
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: odin
+
+
 */
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap');
+
 
 @import
         "variables",           // Theme       Custom Variables
@@ -16,5 +25,6 @@ Author URI: http://wpod.in/#colaboradores
         "wordpress/wordpress", // WordPress   Styles Core
         //"woocommerce",       // WooCommerce Styles Core
         "odin/core",           // Odin        Styles Core
+        "pages/login",          // Theme       Custom Layout
         "layout"               // Theme       Custom Layout
 ;
