@@ -8403,40 +8403,40 @@ img#wpstats {
   border-left: 0;
 }
 .widget_tag_cloud a:nth-child(1) {
-  font-size: 20px !important;
+  font-size: 16px !important;
 }
 .widget_tag_cloud a:nth-child(2) {
-  font-size: 14px !important;
-}
-.widget_tag_cloud a:nth-child(3) {
   font-size: 25px !important;
 }
+.widget_tag_cloud a:nth-child(3) {
+  font-size: 22px !important;
+}
 .widget_tag_cloud a:nth-child(4) {
-  font-size: 17px !important;
+  font-size: 20px !important;
 }
 .widget_tag_cloud a:nth-child(5) {
-  font-size: 26px !important;
+  font-size: 27px !important;
 }
 .widget_tag_cloud a:nth-child(6) {
-  font-size: 24px !important;
+  font-size: 16px !important;
 }
 .widget_tag_cloud a:nth-child(7) {
-  font-size: 19px !important;
+  font-size: 28px !important;
 }
 .widget_tag_cloud a:nth-child(8) {
   font-size: 17px !important;
 }
 .widget_tag_cloud a:nth-child(9) {
-  font-size: 16px !important;
+  font-size: 27px !important;
 }
 .widget_tag_cloud a:nth-child(10) {
-  font-size: 28px !important;
+  font-size: 27px !important;
 }
 .widget_tag_cloud a:nth-child(11) {
-  font-size: 13px !important;
+  font-size: 28px !important;
 }
 .widget_tag_cloud a:nth-child(12) {
-  font-size: 20px !important;
+  font-size: 16px !important;
 }
 
 .wp-video-shortcode {
@@ -8579,6 +8579,23 @@ div#primary .content-title:after {
   display: inline-block;
   clear: none;
 }
+@media (max-width: 1200px) {
+  .cadastrar-animal .form-field {
+    display: block;
+  }
+}
+
+.listar-animal {
+  font-family: "Roboto", sans-serif;
+}
+.listar-animal .list-header, .listar-animal .list-header div, .listar-animal .list-data, .listar-animal .list-data div {
+  padding: 0px;
+  font-size: 16px;
+}
+.listar-animal .list-data, .listar-animal .list-data div {
+  color: #9A9A9A;
+  padding-top: 6px;
+}
 
 .home #content .post {
   margin-bottom: 40px;
@@ -8645,11 +8662,8 @@ div#primary .content-title:after {
 
 #footer {
   text-align: center;
-  position: absolute;
-  bottom: 0;
   width: 100%;
   height: 50px;
-  background-color: #f5f5f5;
   padding-top: 15px;
 }
 
