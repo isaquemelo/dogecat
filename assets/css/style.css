@@ -8403,40 +8403,40 @@ img#wpstats {
   border-left: 0;
 }
 .widget_tag_cloud a:nth-child(1) {
-  font-size: 13px !important;
+  font-size: 20px !important;
 }
 .widget_tag_cloud a:nth-child(2) {
-  font-size: 24px !important;
+  font-size: 14px !important;
 }
 .widget_tag_cloud a:nth-child(3) {
-  font-size: 13px !important;
+  font-size: 25px !important;
 }
 .widget_tag_cloud a:nth-child(4) {
   font-size: 17px !important;
 }
 .widget_tag_cloud a:nth-child(5) {
-  font-size: 17px !important;
+  font-size: 26px !important;
 }
 .widget_tag_cloud a:nth-child(6) {
-  font-size: 20px !important;
+  font-size: 24px !important;
 }
 .widget_tag_cloud a:nth-child(7) {
-  font-size: 21px !important;
+  font-size: 19px !important;
 }
 .widget_tag_cloud a:nth-child(8) {
-  font-size: 21px !important;
+  font-size: 17px !important;
 }
 .widget_tag_cloud a:nth-child(9) {
-  font-size: 25px !important;
+  font-size: 16px !important;
 }
 .widget_tag_cloud a:nth-child(10) {
-  font-size: 30px !important;
+  font-size: 28px !important;
 }
 .widget_tag_cloud a:nth-child(11) {
-  font-size: 18px !important;
+  font-size: 13px !important;
 }
 .widget_tag_cloud a:nth-child(12) {
-  font-size: 24px !important;
+  font-size: 20px !important;
 }
 
 .wp-video-shortcode {
@@ -8569,6 +8569,17 @@ div#primary .content-title:after {
   margin-bottom: 15px;
 }
 
+.cadastrar-animal .consulta-field {
+  display: none;
+}
+.cadastrar-animal .acf-fields > .acf-field {
+  border-top: 0px;
+}
+.cadastrar-animal .form-field {
+  display: inline-block;
+  clear: none;
+}
+
 .home #content .post {
   margin-bottom: 40px;
 }
@@ -8588,6 +8599,7 @@ div#primary .content-title:after {
   list-style: none;
 }
 #sidebar ul li a {
+  width: 80%;
   font-family: "Roboto", sans-serif;
   font-size: 18px;
   color: #9A9A9A;
@@ -8604,6 +8616,7 @@ div#primary .content-title:after {
 #sidebar ul li a[aria-current=page] {
   color: #f9bb4b;
   background: #fde3b7;
+  width: 85%;
 }
 
 #skippy {
