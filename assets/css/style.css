@@ -8403,40 +8403,40 @@ img#wpstats {
   border-left: 0;
 }
 .widget_tag_cloud a:nth-child(1) {
-  font-size: 32px !important;
+  font-size: 13px !important;
 }
 .widget_tag_cloud a:nth-child(2) {
-  font-size: 23px !important;
+  font-size: 24px !important;
 }
 .widget_tag_cloud a:nth-child(3) {
-  font-size: 20px !important;
+  font-size: 13px !important;
 }
 .widget_tag_cloud a:nth-child(4) {
-  font-size: 27px !important;
+  font-size: 17px !important;
 }
 .widget_tag_cloud a:nth-child(5) {
-  font-size: 14px !important;
+  font-size: 17px !important;
 }
 .widget_tag_cloud a:nth-child(6) {
   font-size: 20px !important;
 }
 .widget_tag_cloud a:nth-child(7) {
-  font-size: 26px !important;
+  font-size: 21px !important;
 }
 .widget_tag_cloud a:nth-child(8) {
-  font-size: 15px !important;
+  font-size: 21px !important;
 }
 .widget_tag_cloud a:nth-child(9) {
-  font-size: 13px !important;
+  font-size: 25px !important;
 }
 .widget_tag_cloud a:nth-child(10) {
-  font-size: 24px !important;
+  font-size: 30px !important;
 }
 .widget_tag_cloud a:nth-child(11) {
-  font-size: 31px !important;
+  font-size: 18px !important;
 }
 .widget_tag_cloud a:nth-child(12) {
-  font-size: 20px !important;
+  font-size: 24px !important;
 }
 
 .wp-video-shortcode {
@@ -8472,8 +8472,70 @@ select {
   max-width: none !important;
 }
 
+body {
+  background: url(../images/bone.png) center top !important;
+  background-repeat-y: repeat;
+}
+
+#header .container {
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 1200px) {
+  #header .container {
+    display: block;
+  }
+}
+#header div#main-navigation {
+  display: flex !important;
+  justify-content: flex-end;
+}
+#header .navbar-header {
+  width: auto;
+}
+@media (max-width: 1200px) {
+  #header .navbar-header {
+    width: 100%;
+  }
+}
+#header .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px;
+}
+#header .logo img {
+  max-width: 255px;
+  max-height: 255px;
+  padding: 0px;
+}
+#header nav ul li a {
+  display: block;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+}
+#header nav ul li a:hover {
+  color: #f9bb4b;
+  transition: all 0.2s ease-in-out;
+}
+#header nav ul li a:hover:after {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 3px;
+  position: absolute;
+  margin-top: 3px;
+  background-color: #f9bb4b;
+}
+#header .navbar-default .navbar-nav > .active > a, #header .navbar-default .navbar-nav > .active > a:hover, #header .navbar-default .navbar-nav > .active > a:focus {
+  background: none;
+}
 #header #main-navigation {
   margin: 20px 0;
+}
+#header .navbar {
+  background: none !important;
+  border: none;
 }
 #header .page-header {
   margin: 20px 0 20px;
@@ -8483,12 +8545,65 @@ select {
   font-style: italic;
 }
 
+div#primary {
+  padding: 0px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+div#primary .content-holder {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+}
+div#primary .content-title {
+  font-family: "Roboto", sans-serif;
+  font-size: 26px;
+  color: #f9bb4b;
+}
+div#primary .content-title:after {
+  display: block;
+  content: "";
+  width: 50px;
+  height: 3px;
+  background: #f9bb4b;
+  margin-bottom: 15px;
+}
+
 .home #content .post {
   margin-bottom: 40px;
 }
 .home #content .post.sticky {
   padding: 0 20px 20px;
   border: 1px dashed #5bc0de;
+}
+
+#sidebar {
+  padding: 0px;
+}
+#sidebar .menu {
+  margin: 0px;
+  padding: 0px;
+}
+#sidebar ul li {
+  list-style: none;
+}
+#sidebar ul li a {
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  color: #9A9A9A;
+  background: #f2f2f2;
+  display: block;
+  padding: 14px 20px;
+  margin-bottom: 10px;
+  border-radius: 0px 30px 30px 0px;
+}
+#sidebar ul li a:hover {
+  text-decoration: none;
+  color: #f9bb4b;
+}
+#sidebar ul li a[aria-current=page] {
+  color: #f9bb4b;
+  background: #fde3b7;
 }
 
 #skippy {

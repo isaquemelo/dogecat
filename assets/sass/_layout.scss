@@ -1,30 +1,92 @@
-// ==========================================================================
-// TABLE OF CONTENTS:
-// ==========================================================================
-//
-// # Header
-// 		# Title + description
-// 		# Navbar
-// # Wrapper
-// # Content
-// # Sidebar and Widgets
-// # Components
-// 		# Fancy skip link
-// 		# Pagination
-// 		# Comments
-// # Footer
-//
+body {
+  background: url(../images/bone.png) center top !important;
+  background-repeat-y: repeat;
+}
 
-// ==========================================================================
-// Header
-// ==========================================================================
+
+
+
+
 #header {
+    .container {
+      display: flex;
+      align-items: center;
+
+      @media (max-width: 1200px){
+        display: block;
+      }
+
+    }
+
+    div#main-navigation {
+      display: flex!important;
+      justify-content: flex-end;
+    }
+    .navbar-header {
+        width: auto;
+        @media (max-width: 1200px){
+          width: 100%;
+        }
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0px;
+    }
+
+    .logo img {
+      max-width: 255px;
+      max-height: 255px;
+      padding: 0px;
+    }
+
+    nav {
+      ul {
+        li {
+          a {
+            display: block;
+            font-family: $default_font;
+            font-size: 16px;
+
+            &:hover{
+              color: $primary;
+              transition: all .2s ease-in-out;
+            }
+
+            &:hover:after {
+              content: '';
+              display: block;
+              width: 30px;
+              height: 3px;
+              position: absolute;
+              margin-top: 3px;
+              background-color: $primary;
+            }
+          }
+        }
+      }
+    }
+
+    .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+      background: none;
+    }
+
+
+
     //
     // Navbar
     //
     #main-navigation {
         margin: 20px 0;
     }
+
+    .navbar {
+      background: none!important;
+      border: none;
+    }
+
     //
     // Title, description and image
     //
@@ -38,6 +100,9 @@
     }
 }
 
+
+
+
 // ==========================================================================
 // Wrapper
 // ==========================================================================
@@ -47,6 +112,34 @@
 // Content
 // ==========================================================================
 #content {}
+
+div#primary {
+    padding: 0px;
+    margin-left: 15px;
+    margin-right: 15px;
+
+    .content-holder {
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+    }
+
+    .content-title {
+      font-family: $default_font;
+      font-size: 26px;
+      color: $yellow;
+
+      &:after {
+        display: block;
+        content: "";
+        width: 50px;
+        height: 3px;
+        background: $yellow;
+        margin-bottom: 15px;
+      }
+  }
+}
+
 
 //
 // Home
@@ -66,7 +159,39 @@
 // ==========================================================================
 // Sidebar
 // ==========================================================================
-#sidebar {}
+#sidebar {
+  padding: 0px;
+  .menu {
+    margin: 0px;
+    padding: 0px;
+  }
+
+
+  ul li{
+    list-style: none;
+    a {
+      &:hover{
+        text-decoration: none;
+        color: $yellow;
+      }
+
+      &[aria-current=page] {
+        color: $yellow;
+        background: #fde3b7;
+      }
+
+      font-family: $default_font;
+      font-size: 18px;
+      color: $grey;
+      background: #f2f2f2;
+      display: block;
+      padding: 14px 20px;
+      margin-bottom: 10px;
+      border-radius: 0px 30px 30px 0px;
+    }
+  }
+
+}
 
 // ==========================================================================
 // Components
