@@ -125,6 +125,8 @@ if ( ! function_exists( 'odin_setup_features' ) ) {
 			)
 		);
 
+
+
 		/**
 		 * Add support for Post Formats.
 		 */
@@ -311,7 +313,7 @@ function custom_animal_type() {
 	$args = array(
 		'label'                 => __( 'Animal', 'odin' ),
 		'labels'                => $labels,
-		'supports'              => array( 'custom-fields' ),
+		'supports'              => array( 'custom-fields', 'title' ),
 		'hierarchical'          => false,
 		'public'                => true,
 		'show_ui'               => true,
@@ -365,7 +367,7 @@ function custom_consulta_type() {
 	$args = array(
 		'label'                 => __( 'Consulta', 'odin' ),
 		'labels'                => $labels,
-		'supports'              => array( 'custom-fields' ),
+		'supports'              => array( 'custom-fields', 'title'),
 		'hierarchical'          => false,
 		'public'                => true,
 		'show_ui'               => true,
@@ -390,8 +392,16 @@ add_action( 'init', 'custom_animal_type', 0 );
 add_action( 'init', 'custom_consulta_type', 0 );
 
 
+// relationship
 
-
+add_action( 'mb_relationships_init', function() {
+	MB_Relationships_API::register( array(
+			'id'   => 'animal_to_consulta',
+			'from' => 'animal',
+			'to'   => 'consulta',
+			'max_clone' => 1,
+	) );
+} );
 
 
 get_template_part('requests/animal/new');

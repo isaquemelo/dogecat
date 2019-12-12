@@ -179,17 +179,21 @@ div#primary {
 
 }
 
+.hidden{
+  display: none;
+}
+
 .default-btn {
-  font-size: 16px;
-  padding: 5px 10px;
-  color: $yellow;
-  border: 2px solid $yellow;
-  border-radius: 3px;
-  margin: 15px 0px;
+  font-size: 16px!important;
+  padding: 5px 10px!important;
+  color: $yellow!important;
+  border: 2px solid $yellow!important;
+  border-radius: 3px!important;
+  margin: 15px 0px!important;
 
   &:hover {
-    color: $yellow;
-    text-decoration: none
+    color: $yellow!important;
+    text-decoration: none!important;
   }
 }
 
@@ -222,6 +226,16 @@ div#primary {
 
   .cota-cota {
     font-weight: bold;
+  }
+
+  .subtitle {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .fotos .subtitle{
+    margin-top: 5px;
   }
 }
 
