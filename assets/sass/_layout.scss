@@ -160,6 +160,10 @@ div#primary {
   }
 }
 
+.no-padding {
+  padding:0px!important;
+}
+
 .listar-animal {
   font-family: $default_font;
   .list-header, .list-header div, .list-data, .list-data div  {
@@ -171,6 +175,34 @@ div#primary {
     padding-top: 6px;
   }
 }
+
+.single-animal {
+  font-family: $default_font;
+  .animal-id {
+    font-size: 16px;
+  }
+
+  .cota-mensal {
+    border-left: 2px solid $yellow;
+  }
+
+  .cota-title {
+    font-size: 18px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .cota-info {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .cota-cota {
+    font-weight: bold;
+  }
+}
+
 
 
 //
