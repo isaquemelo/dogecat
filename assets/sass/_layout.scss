@@ -49,6 +49,8 @@ body {
             display: block;
             font-family: $default_font;
             font-size: 16px;
+            text-transform: uppercase;
+            font-weight: 900;
 
             &:hover{
               color: $primary;
@@ -174,6 +176,21 @@ div#primary {
     color: $grey;
     padding-top: 6px;
   }
+
+}
+
+.default-btn {
+  font-size: 16px;
+  padding: 5px 10px;
+  color: $yellow;
+  border: 2px solid $yellow;
+  border-radius: 3px;
+  margin: 15px 0px;
+
+  &:hover {
+    color: $yellow;
+    text-decoration: none
+  }
 }
 
 .single-animal {
@@ -182,8 +199,13 @@ div#primary {
     font-size: 16px;
   }
 
-  .cota-mensal {
-    border-left: 2px solid $yellow;
+  .content-title {
+    border-right: 2px solid $yellow;
+  }
+  .animal-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .cota-title {
@@ -201,6 +223,10 @@ div#primary {
   .cota-cota {
     font-weight: bold;
   }
+}
+
+.bold-font {
+  font-weight: bold;
 }
 
 
@@ -238,6 +264,7 @@ div#primary {
       &:hover{
         text-decoration: none;
         color: $yellow;
+        font-weight: bold;
       }
 
       &[aria-current=page] {
