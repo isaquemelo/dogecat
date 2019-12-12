@@ -49,9 +49,22 @@ get_header();
                Nome: <span class="bold-font"><?php the_field('nome'); ?></span>
              </div>
 
-             <div class="animal-plano">
+             <div class="animal-raca">
+               Raça: <span class="bold-font"><?php the_field('raca'); ?></span>
+             </div>
+
+             <div class="animal-sexo">
+               Sexo animal: <span class="bold-font"><?php the_field('sexo_animal'); ?></span>
+             </div>
+
+             <div class="animal-vacinas">
+               Plano: <span class="bold-font"><?php the_field('vacinas'); ?></span>
+             </div>
+
+            <div class="animal-plano">
                Plano: <span class="bold-font"><?php the_field('plano'); ?></span>
              </div>
+
 
              <div class="animal-dono">
                Nome do dono: <span class="bold-font"><?php the_field('nome_do_dono'); ?></span>
