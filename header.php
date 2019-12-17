@@ -7,7 +7,8 @@
  * @package Odin
  * @since 2.2.0
  */
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html class="no-js" <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
@@ -17,6 +18,7 @@
 	<?php if ( ! get_option( 'site_icon' ) ) : ?>
 		<link href="<?php echo get_template_directory_uri(); ?>/assets/images/favicon.ico" rel="shortcut icon" />
 	<?php endif; ?>
+	<script src="https://kit.fontawesome.com/9a188c63bf.js" crossorigin="anonymous"></script>
 	<?php wp_head(); ?>
 </head>
 

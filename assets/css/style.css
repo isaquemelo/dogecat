@@ -8403,40 +8403,40 @@ img#wpstats {
   border-left: 0;
 }
 .widget_tag_cloud a:nth-child(1) {
-  font-size: 32px !important;
+  font-size: 23px !important;
 }
 .widget_tag_cloud a:nth-child(2) {
-  font-size: 20px !important;
+  font-size: 32px !important;
 }
 .widget_tag_cloud a:nth-child(3) {
-  font-size: 28px !important;
+  font-size: 27px !important;
 }
 .widget_tag_cloud a:nth-child(4) {
-  font-size: 26px !important;
+  font-size: 30px !important;
 }
 .widget_tag_cloud a:nth-child(5) {
-  font-size: 23px !important;
+  font-size: 21px !important;
 }
 .widget_tag_cloud a:nth-child(6) {
-  font-size: 29px !important;
+  font-size: 26px !important;
 }
 .widget_tag_cloud a:nth-child(7) {
-  font-size: 20px !important;
-}
-.widget_tag_cloud a:nth-child(8) {
-  font-size: 15px !important;
-}
-.widget_tag_cloud a:nth-child(9) {
   font-size: 23px !important;
 }
+.widget_tag_cloud a:nth-child(8) {
+  font-size: 14px !important;
+}
+.widget_tag_cloud a:nth-child(9) {
+  font-size: 13px !important;
+}
 .widget_tag_cloud a:nth-child(10) {
-  font-size: 31px !important;
+  font-size: 28px !important;
 }
 .widget_tag_cloud a:nth-child(11) {
-  font-size: 29px !important;
+  font-size: 21px !important;
 }
 .widget_tag_cloud a:nth-child(12) {
-  font-size: 28px !important;
+  font-size: 20px !important;
 }
 
 .wp-video-shortcode {
@@ -8472,6 +8472,25 @@ select {
   max-width: none !important;
 }
 
+.single-animal .actions a {
+  color: #f9bb4b;
+  font-size: 25px;
+  padding: 0px 2px;
+  text-decoration: none;
+}
+.single-animal .carteirinha {
+  display: none;
+}
+
+@media print {
+  header, #sidebar, footer, .single-animal-holder {
+    display: none;
+  }
+
+  .carteirinha {
+    display: block !important;
+  }
+}
 body {
   background: url(../images/bone.png) center top !important;
   background-repeat-y: repeat;
@@ -8626,6 +8645,15 @@ div#primary .content-title:after {
 .single-animal .animal-id {
   font-size: 16px;
 }
+.single-animal .list-header, .single-animal .list-header div, .single-animal .list-data, .single-animal .list-data div {
+  padding: 0px;
+  font-size: 14px;
+  font-weight: bold;
+}
+.single-animal .list-data, .single-animal .list-data div {
+  color: #9A9A9A;
+  padding-top: 6px;
+}
 .single-animal .content-title {
   border-right: 2px solid #f9bb4b;
 }
@@ -8633,6 +8661,16 @@ div#primary .content-title:after {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.single-animal .consulta-title {
+  margin-top: 5px;
+}
+.single-animal a.single-consulta-item {
+  display: block;
+  margin-bottom: 5px;
+  width: 100%;
+  padding: 0px;
+  color: #9A9A9A;
 }
 .single-animal .cota-title {
   font-size: 18px;
@@ -8654,6 +8692,13 @@ div#primary .content-title:after {
 }
 .single-animal .fotos .subtitle {
   margin-top: 5px;
+}
+.single-animal .acf-form-fields {
+  margin-top: 15px;
+}
+.single-animal .acf-form-fields .acf-field {
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .bold-font {

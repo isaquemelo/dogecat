@@ -39,6 +39,7 @@ if(isset($_POST['submitted']) && isset($_POST['post_nonce_field']) && wp_verify_
 
 
 acf_form_head();
+acf_enqueue_uploader();
 get_header();
 
 
@@ -52,49 +53,19 @@ get_header();
 				<span>Cadastrar animal</span>
 			</div>
 
-			<!-- <form action="" id="primaryPostForm" method="POST">
-
-				<fieldset>
-
-					<label for="postTitle"><?php _e('Post\'s Title:', 'framework') ?></label>
-
-					<input type="text" name="postTitle" id="postTitle" value="<?php if(isset($_POST['postTitle'])) echo $_POST['postTitle'];?>" class="required" />
-
-				</fieldset>
-
-				<?php if($postTitleError != '') { ?>
-					<span class="error"><?php echo $postTitleError; ?></span>
-					<div class="clearfix"></div>
-				<?php } ?>
-
-				<fieldset>
-
-					<label for="postContent"><?php _e('Post\'s Content:', 'framework') ?></label>
-
-					<textarea name="postContent" id="postContent" rows="8" cols="30"><?php if(isset($_POST['postContent'])) { if(function_exists('stripslashes')) { echo stripslashes($_POST['postContent']); } else { echo $_POST['postContent']; } } ?></textarea>
-
-				</fieldset>
-
-				<fieldset>
-
-					<?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
-
-					<input type="hidden" name="submitted" id="submitted" value="true" />
-					<button type="submit"><?php _e('Add Post', 'framework') ?></button>
-
-				</fieldset>
-
-			</form> -->
-
 			<?php
 				acf_form(array(
 					'post_id'		=> 'new_post',
 					'post_title'	=> false,
 					'post_content'	=> false,
+					'uploader' => 'basic',
+					'submit_value' => 'Cadastrar animal',
+					'updated_message' => 'Animal cadastrado',
 					'new_post'		=> array(
 						'post_type'		=> 'animal',
 						'post_status'	=> 'publish'
-					)
+					),
+
 				));
 
 			?>
