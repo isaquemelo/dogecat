@@ -47,6 +47,7 @@ if ( isset( $_GET['animal'] ) ) {
 					'post_id'		=> $current_post,
 					'post_title'	=> false,
 					'post_content'	=> false,
+					'return' => '%post_url%',
 					'new_post'		=> array(
 						'post_type'		=> 'animal',
 						'post_status'	=> 'publish'

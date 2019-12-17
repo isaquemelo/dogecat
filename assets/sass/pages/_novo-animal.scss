@@ -1,0 +1,30 @@
+.page-template-template-novo-animal,  .page-template-template-edit-animal{
+	input[type=text], input[type=number], textarea{
+	    border: 2px solid $yellow;
+	    padding: 10px 15px;
+	    height: 46px;
+	    border-radius: 5px;
+	    outline: none;
+	}
+
+	textarea {
+		height: 100px;
+	}
+
+	.acf-fields>.acf-field {
+		padding-left: 0px;
+		padding-bottom: 0px;
+	}
+	.select2-selection {
+	    border: 2px solid $yellow!important;
+	    padding: 10px 0px!important;
+	    height: 46px!important;
+	    border-radius: 5px!important;
+	    display: flex!important;
+	    align-items: center;
+	}
+	span.select2-selection__arrow {
+	    top: unset!important;
+	    right: 9px!important;
+	}
+}

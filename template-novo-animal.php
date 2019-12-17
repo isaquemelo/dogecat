@@ -61,6 +61,8 @@ get_header();
 					'uploader' => 'basic',
 					'submit_value' => 'Cadastrar animal',
 					'updated_message' => 'Animal cadastrado',
+					'return' => '%post_url%',
+					'instruction_placement' => 'field',
 					'new_post'		=> array(
 						'post_type'		=> 'animal',
 						'post_status'	=> 'publish'
