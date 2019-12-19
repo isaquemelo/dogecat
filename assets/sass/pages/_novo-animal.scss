@@ -1,10 +1,11 @@
 .page-template-template-novo-animal,  .page-template-template-edit-animal{
-	input[type=text], input[type=number], textarea{
+	input[type=text], input[type=number], textarea, select{
 	    border: 2px solid $yellow;
 	    padding: 10px 15px;
 	    height: 46px;
 	    border-radius: 5px;
 	    outline: none;
+	    background-color: white;
 	}
 
 	textarea {

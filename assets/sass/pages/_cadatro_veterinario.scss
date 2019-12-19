@@ -1,0 +1,25 @@
+.page-template-template-cadastrar-veterinario {
+	input[type=text], input[type=number], textarea, input[type=email], select, input[type=password], input[type=submit]{
+	    border: 2px solid $yellow;
+	    padding: 10px 15px;
+	    height: 46px;
+	    border-radius: 5px;
+	    outline: none;
+	    width: 100%;
+	    background-color: white;
+	    margin-bottom: 15px;
+	}
+
+	input[type=submit] {
+		text-transform: uppercase;
+	}
+
+	textarea {
+		height: 100px;
+	}
+
+	.status {
+		color: red;
+	}
+
+}

@@ -201,6 +201,18 @@ function odin_widgets_init() {
 			'after_title' => '</h3>',
 		)
 	);
+
+	register_sidebar(
+		array(
+			'name' => __( 'Sidebar dos veterinarios', 'odin' ),
+			'id' => 'vet-sidebar',
+			'description' => __( 'Veterinarios Sidebar', 'odin' ),
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget' => '</aside>',
+			'before_title' => '<h3 class="widgettitle widget-title">',
+			'after_title' => '</h3>',
+		)
+	);
 }
 
 add_action( 'widgets_init', 'odin_widgets_init' );
@@ -454,3 +466,24 @@ if ( is_woocommerce_activated() ) {
 	require get_template_directory() . '/inc/woocommerce/functions.php';
 	require get_template_directory() . '/inc/woocommerce/template-tags.php';
 }
+
+
+
+
+
+
+
+
+$planos = [
+	'planoa' => [],
+	'planob' => [],
+	'planoc' => [],
+
+];
+
+
+
+
+
+
+

@@ -8403,40 +8403,40 @@ img#wpstats {
   border-left: 0;
 }
 .widget_tag_cloud a:nth-child(1) {
-  font-size: 31px !important;
-}
-.widget_tag_cloud a:nth-child(2) {
-  font-size: 30px !important;
-}
-.widget_tag_cloud a:nth-child(3) {
   font-size: 13px !important;
 }
-.widget_tag_cloud a:nth-child(4) {
-  font-size: 24px !important;
-}
-.widget_tag_cloud a:nth-child(5) {
-  font-size: 32px !important;
-}
-.widget_tag_cloud a:nth-child(6) {
-  font-size: 16px !important;
-}
-.widget_tag_cloud a:nth-child(7) {
-  font-size: 20px !important;
-}
-.widget_tag_cloud a:nth-child(8) {
-  font-size: 28px !important;
-}
-.widget_tag_cloud a:nth-child(9) {
-  font-size: 18px !important;
-}
-.widget_tag_cloud a:nth-child(10) {
+.widget_tag_cloud a:nth-child(2) {
   font-size: 29px !important;
 }
+.widget_tag_cloud a:nth-child(3) {
+  font-size: 27px !important;
+}
+.widget_tag_cloud a:nth-child(4) {
+  font-size: 14px !important;
+}
+.widget_tag_cloud a:nth-child(5) {
+  font-size: 22px !important;
+}
+.widget_tag_cloud a:nth-child(6) {
+  font-size: 21px !important;
+}
+.widget_tag_cloud a:nth-child(7) {
+  font-size: 14px !important;
+}
+.widget_tag_cloud a:nth-child(8) {
+  font-size: 20px !important;
+}
+.widget_tag_cloud a:nth-child(9) {
+  font-size: 22px !important;
+}
+.widget_tag_cloud a:nth-child(10) {
+  font-size: 31px !important;
+}
 .widget_tag_cloud a:nth-child(11) {
-  font-size: 30px !important;
+  font-size: 28px !important;
 }
 .widget_tag_cloud a:nth-child(12) {
-  font-size: 15px !important;
+  font-size: 14px !important;
 }
 
 .wp-video-shortcode {
@@ -8491,12 +8491,13 @@ select {
     display: block !important;
   }
 }
-.page-template-template-novo-animal input[type=text], .page-template-template-novo-animal input[type=number], .page-template-template-novo-animal textarea, .page-template-template-edit-animal input[type=text], .page-template-template-edit-animal input[type=number], .page-template-template-edit-animal textarea {
+.page-template-template-novo-animal input[type=text], .page-template-template-novo-animal input[type=number], .page-template-template-novo-animal textarea, .page-template-template-novo-animal select, .page-template-template-edit-animal input[type=text], .page-template-template-edit-animal input[type=number], .page-template-template-edit-animal textarea, .page-template-template-edit-animal select {
   border: 2px solid #f9bb4b;
   padding: 10px 15px;
   height: 46px;
   border-radius: 5px;
   outline: none;
+  background-color: white;
 }
 .page-template-template-novo-animal textarea, .page-template-template-edit-animal textarea {
   height: 100px;
@@ -8516,6 +8517,26 @@ select {
 .page-template-template-novo-animal span.select2-selection__arrow, .page-template-template-edit-animal span.select2-selection__arrow {
   top: unset !important;
   right: 9px !important;
+}
+
+.page-template-template-cadastrar-veterinario input[type=text], .page-template-template-cadastrar-veterinario input[type=number], .page-template-template-cadastrar-veterinario textarea, .page-template-template-cadastrar-veterinario input[type=email], .page-template-template-cadastrar-veterinario select, .page-template-template-cadastrar-veterinario input[type=password], .page-template-template-cadastrar-veterinario input[type=submit] {
+  border: 2px solid #f9bb4b;
+  padding: 10px 15px;
+  height: 46px;
+  border-radius: 5px;
+  outline: none;
+  width: 100%;
+  background-color: white;
+  margin-bottom: 15px;
+}
+.page-template-template-cadastrar-veterinario input[type=submit] {
+  text-transform: uppercase;
+}
+.page-template-template-cadastrar-veterinario textarea {
+  height: 100px;
+}
+.page-template-template-cadastrar-veterinario .status {
+  color: red;
 }
 
 body {

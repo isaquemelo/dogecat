@@ -10,6 +10,10 @@
  * @uses Advanced Custom Fields Pro
  */
 
+if (!is_user_logged_in()) {
+	auth_redirect();
+}
+
 $postTitleError = '';
 
 if(isset($_POST['submitted']) && isset($_POST['post_nonce_field']) && wp_verify_nonce($_POST['post_nonce_field'], 'post_nonce')) {
