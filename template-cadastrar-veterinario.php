@@ -67,8 +67,8 @@ if (isset( $_POST["user"] ) && wp_verify_nonce($_POST['pippin_register_nonce'], 
 		if(empty($errors)) {
 			$new_user_id = wp_insert_user(array(
 					'user_login'		=> $user_login,
-					'first_name'		=> str_split($nome_completo)[0],
-					'last_name'			=> str_split($nome_completo)[1],
+					'first_name'		=> explode(" ", $nome_completo)[0],
+					'last_name'			=> explode(" ", $nome_completo)[1],
 					'user_registered'	=> date('Y-m-d H:i:s'),
 					'user_pass'	 		=> $user_pass,
 					'user_email'		=> $user_email,
@@ -83,6 +83,8 @@ if (isset( $_POST["user"] ) && wp_verify_nonce($_POST['pippin_register_nonce'], 
 				add_user_meta( $new_user_id, "cidade", $cidade, false);
 				add_user_meta( $new_user_id, "rua", $rua, false);
 				add_user_meta( $new_user_id, "numero", $numero, false);
+
+				wp_redirect("/dogecat");
 
 				// send an email to the admin alerting them of the registration
 				//wp_new_user_notification($new_user_id);
@@ -140,7 +142,7 @@ get_header();
 
 		            <div class="col-md-6">
 		                    <label>Celular</label>
-		                    <input autofocus type="number" name="celular" placeholder="Celular">
+		                    <input autofocus type="tel" name="celular" placeholder="Celular">
 		            </div>
 
 		            <div class="col-md-3">

@@ -8403,40 +8403,40 @@ img#wpstats {
   border-left: 0;
 }
 .widget_tag_cloud a:nth-child(1) {
-  font-size: 13px !important;
+  font-size: 26px !important;
 }
 .widget_tag_cloud a:nth-child(2) {
-  font-size: 29px !important;
+  font-size: 17px !important;
 }
 .widget_tag_cloud a:nth-child(3) {
-  font-size: 27px !important;
-}
-.widget_tag_cloud a:nth-child(4) {
-  font-size: 14px !important;
-}
-.widget_tag_cloud a:nth-child(5) {
-  font-size: 22px !important;
-}
-.widget_tag_cloud a:nth-child(6) {
-  font-size: 21px !important;
-}
-.widget_tag_cloud a:nth-child(7) {
-  font-size: 14px !important;
-}
-.widget_tag_cloud a:nth-child(8) {
-  font-size: 20px !important;
-}
-.widget_tag_cloud a:nth-child(9) {
-  font-size: 22px !important;
-}
-.widget_tag_cloud a:nth-child(10) {
   font-size: 31px !important;
 }
-.widget_tag_cloud a:nth-child(11) {
+.widget_tag_cloud a:nth-child(4) {
+  font-size: 27px !important;
+}
+.widget_tag_cloud a:nth-child(5) {
+  font-size: 14px !important;
+}
+.widget_tag_cloud a:nth-child(6) {
+  font-size: 18px !important;
+}
+.widget_tag_cloud a:nth-child(7) {
+  font-size: 19px !important;
+}
+.widget_tag_cloud a:nth-child(8) {
+  font-size: 23px !important;
+}
+.widget_tag_cloud a:nth-child(9) {
+  font-size: 31px !important;
+}
+.widget_tag_cloud a:nth-child(10) {
   font-size: 28px !important;
 }
+.widget_tag_cloud a:nth-child(11) {
+  font-size: 24px !important;
+}
 .widget_tag_cloud a:nth-child(12) {
-  font-size: 14px !important;
+  font-size: 24px !important;
 }
 
 .wp-video-shortcode {
@@ -8491,7 +8491,7 @@ select {
     display: block !important;
   }
 }
-.page-template-template-novo-animal input[type=text], .page-template-template-novo-animal input[type=number], .page-template-template-novo-animal textarea, .page-template-template-novo-animal select, .page-template-template-edit-animal input[type=text], .page-template-template-edit-animal input[type=number], .page-template-template-edit-animal textarea, .page-template-template-edit-animal select {
+.page-template-template-novo-animal .content-holder input[type=text], .page-template-template-novo-animal .content-holder input[type=number], .page-template-template-novo-animal .content-holder textarea, .page-template-template-novo-animal .content-holder input[type=email], .page-template-template-novo-animal .content-holder select, .page-template-template-novo-animal .content-holder input[type=password], .page-template-template-novo-animal .content-holder input[type=submit], .page-template-template-edit-animal .content-holder input[type=text], .page-template-template-edit-animal .content-holder input[type=number], .page-template-template-edit-animal .content-holder textarea, .page-template-template-edit-animal .content-holder input[type=email], .page-template-template-edit-animal .content-holder select, .page-template-template-edit-animal .content-holder input[type=password], .page-template-template-edit-animal .content-holder input[type=submit] {
   border: 2px solid #f9bb4b;
   padding: 10px 15px;
   height: 46px;
@@ -8499,14 +8499,14 @@ select {
   outline: none;
   background-color: white;
 }
-.page-template-template-novo-animal textarea, .page-template-template-edit-animal textarea {
+.page-template-template-novo-animal .content-holder textarea, .page-template-template-edit-animal .content-holder textarea {
   height: 100px;
 }
-.page-template-template-novo-animal .acf-fields > .acf-field, .page-template-template-edit-animal .acf-fields > .acf-field {
+.page-template-template-novo-animal .content-holder .acf-fields > .acf-field, .page-template-template-edit-animal .content-holder .acf-fields > .acf-field {
   padding-left: 0px;
   padding-bottom: 0px;
 }
-.page-template-template-novo-animal .select2-selection, .page-template-template-edit-animal .select2-selection {
+.page-template-template-novo-animal .content-holder .select2-selection, .page-template-template-edit-animal .content-holder .select2-selection {
   border: 2px solid #f9bb4b !important;
   padding: 10px 0px !important;
   height: 46px !important;
@@ -8514,12 +8514,17 @@ select {
   display: flex !important;
   align-items: center;
 }
-.page-template-template-novo-animal span.select2-selection__arrow, .page-template-template-edit-animal span.select2-selection__arrow {
+.page-template-template-novo-animal .content-holder span.select2-selection__arrow, .page-template-template-edit-animal .content-holder span.select2-selection__arrow {
   top: unset !important;
   right: 9px !important;
 }
+.page-template-template-novo-animal .content-holder input[type=submit], .page-template-template-edit-animal .content-holder input[type=submit] {
+  text-transform: uppercase;
+  margin-top: 15px;
+  width: 100%;
+}
 
-.page-template-template-cadastrar-veterinario input[type=text], .page-template-template-cadastrar-veterinario input[type=number], .page-template-template-cadastrar-veterinario textarea, .page-template-template-cadastrar-veterinario input[type=email], .page-template-template-cadastrar-veterinario select, .page-template-template-cadastrar-veterinario input[type=password], .page-template-template-cadastrar-veterinario input[type=submit] {
+.page-template-template-cadastrar-veterinario input[type=text], .page-template-template-cadastrar-veterinario input[type=number], .page-template-template-cadastrar-veterinario textarea, .page-template-template-cadastrar-veterinario input[type=email], .page-template-template-cadastrar-veterinario select, .page-template-template-cadastrar-veterinario input[type=password], .page-template-template-cadastrar-veterinario input[type=submit], .page-template-template-cadastrar-veterinario input[type=tel], .page-template-template-veterinario input[type=text], .page-template-template-veterinario input[type=number], .page-template-template-veterinario textarea, .page-template-template-veterinario input[type=email], .page-template-template-veterinario select, .page-template-template-veterinario input[type=password], .page-template-template-veterinario input[type=submit], .page-template-template-veterinario input[type=tel] {
   border: 2px solid #f9bb4b;
   padding: 10px 15px;
   height: 46px;
@@ -8529,14 +8534,24 @@ select {
   background-color: white;
   margin-bottom: 15px;
 }
-.page-template-template-cadastrar-veterinario input[type=submit] {
+.page-template-template-cadastrar-veterinario input[type=submit], .page-template-template-veterinario input[type=submit] {
   text-transform: uppercase;
 }
-.page-template-template-cadastrar-veterinario textarea {
+.page-template-template-cadastrar-veterinario textarea, .page-template-template-veterinario textarea {
   height: 100px;
 }
-.page-template-template-cadastrar-veterinario .status {
+.page-template-template-cadastrar-veterinario .status, .page-template-template-veterinario .status {
   color: red;
+}
+
+.page-template-template-veterinario .actions {
+  text-align: right;
+}
+.page-template-template-veterinario .actions a {
+  color: #f9bb4b;
+  font-size: 25px;
+  padding: 0px 2px;
+  text-decoration: none;
 }
 
 body {

@@ -1,5 +1,5 @@
-.page-template-template-cadastrar-veterinario {
-	input[type=text], input[type=number], textarea, input[type=email], select, input[type=password], input[type=submit]{
+.page-template-template-cadastrar-veterinario, .page-template-template-veterinario {
+	input[type=text], input[type=number], textarea, input[type=email], select, input[type=password], input[type=submit], input[type=tel]{
 	    border: 2px solid $yellow;
 	    padding: 10px 15px;
 	    height: 46px;
