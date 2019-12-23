@@ -72,7 +72,6 @@ if (isset( $_POST["user"] ) && wp_verify_nonce($_POST['pippin_register_nonce'], 
 			echo "sem erros";
 			$new_user_id = wp_update_user(array(
 					'ID'				=> $vet_id,
-					'user_login'		=> $user_login,
 					'first_name'		=> explode(" ", $nome_completo)[0],
 					'last_name'			=> explode(" ", $nome_completo)[1],
 					'user_registered'	=> date('Y-m-d H:i:s'),
