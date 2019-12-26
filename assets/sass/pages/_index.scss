@@ -1,0 +1,49 @@
+.home-wrapper {
+	.buttons {
+		margin-top: 15px;
+		margin-bottom: 25px;
+		.novo-animal {
+			background-color: $yellow;
+			padding: 13px 20px;
+			color: white;
+			border-radius: 3px;
+			font-weight: bold;
+			text-decoration: none;
+		}
+
+		.nova-consulta {
+			border: 1px solid $yellow;
+			padding: 13px 20px;
+			color: $yellow;
+			border-radius: 3px;
+			font-weight: bold;
+			text-decoration: none;
+		}
+	}
+
+	.ir-animal {
+		input {
+			border: 2px solid $yellow;
+			padding: 10px 15px;
+			height: 46px;
+			border-radius: 5px;
+			outline: none;
+			background-color: white;
+		}
+
+		form {
+			display: flex;
+		}
+
+		input[type=text] {
+			flex: 1;
+			margin-right: 3.5px;
+		}
+
+		input[type=submit] {
+			color: white;
+			padding: 0px 30px;
+			background-color: $yellow;
+		}
+	}
+}
