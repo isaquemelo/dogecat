@@ -22,15 +22,15 @@ get_header();
 		<div class="col-md-9 content-holder">
 
 			<div class="content-title">
-				<span>Animais</span>
+				<span>Veterinários</span>
 			</div>
 
 			<div class="list">
 				<div class="list-header col-md-12">
 						<div class="col-md-1">Cód.</div>
-						<div class="col-md-6">Nome</div>
+						<div class="col-md-5">Nome</div>
 						<div class="col-md-3">Clinica</div>
-						<div class="col-md-1">Celular</div>
+						<div class="col-md-2">Celular</div>
 				</div>
 
 				<?php
@@ -45,9 +45,9 @@ get_header();
 					<div class="list-data col-md-12">
 							<a href="<?php echo get_author_posts_url($user->ID) . '?id=' . $user->ID; ?>">
 								<div class="col-md-1">#<?php echo $user->ID; ?></div>
-								<div class="col-md-6"><?php echo get_user_meta($user->ID, 'nome_completo', true); ?></div>
+								<div class="col-md-5"><?php echo get_user_meta($user->ID, 'nome_completo', true); ?></div>
 								<div class="col-md-3"><?php echo get_user_meta($user->ID, 'clinica', true); ?></div>
-								<div class="col-md-1"><?php echo get_user_meta($user->ID, 'celular', true);; ?></div>
+								<div class="col-md-2"><?php echo get_user_meta($user->ID, 'celular', true);; ?></div>
 							</a>
 					</div>
 

@@ -1,0 +1,20 @@
+.page-template-template-nova-consulta {
+	input {
+		border: 2px solid $yellow;
+		padding: 10px 15px;
+		height: 46px;
+		border-radius: 5px;
+		outline: none;
+		background-color: white;
+	}
+
+	input[type=submit] {
+		color: white;
+		background-color: $yellow;
+	}
+
+	.acf-fields>.acf-field {
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+}

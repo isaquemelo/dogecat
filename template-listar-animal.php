@@ -34,10 +34,10 @@ get_header();
 				</div>
 
 				<?php
-				$temp = $wp_query;
-			  $wp_query = null;
-			  $wp_query = new WP_Query();
-			  $wp_query->query('showposts=20&post_type=animal'.'&paged='.$paged);
+					$temp = $wp_query;
+			  		$wp_query = null;
+			  		$wp_query = new WP_Query();
+			  		$wp_query->query('showposts=20&post_type=animal'.'&paged='.$paged);
 
 				?>
 

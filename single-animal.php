@@ -209,6 +209,7 @@ get_header();
 			 if ($connected->have_posts()):
 
 			?>
+				<?php if (!$is_consulta): ?>
 				<div class="animal-data subtitle consulta-title">
 	     			Consultas:
 	   			</div>
@@ -218,6 +219,7 @@ get_header();
 							<div class="col-md-3">Data</div>
 							<div class="col-md-6">Procedimentos</div>
 				</div>
+				<?php endif; ?>
 
 			<?php endif; ?>
 

@@ -1,0 +1,27 @@
+.single-consulta {
+
+
+	.actions {
+		a {
+		    color: $yellow;
+			font-size: 25px;
+			padding: 0px 2px;
+			text-decoration: none;
+		}
+	}
+	.carteirinha {
+		display: none;
+	}
+
+
+}
+
+@media print {
+	header, #sidebar, footer, .single-animal-holder {
+		display: none;
+	}
+
+	.carteirinha {
+		display: block!important;
+	}
+}

@@ -8,6 +8,10 @@ if (!is_user_logged_in()) {
 	auth_redirect();
 }
 
+if (wp_get_current_user()->roles[0] == "um_veterinario") {
+	wp_redirect(home_url());
+}
+
 function pippin_errors(){
     static $wp_error; // Will hold global variable safely
     return isset($wp_error) ? $wp_error : ($wp_error = new WP_Error(null, null, null));
@@ -84,7 +88,7 @@ if (isset( $_POST["user"] ) && wp_verify_nonce($_POST['pippin_register_nonce'], 
 				add_user_meta( $new_user_id, "rua", $rua, false);
 				add_user_meta( $new_user_id, "numero", $numero, false);
 
-				wp_redirect("/dogecat");
+				wp_redirect(home_url());
 
 				// send an email to the admin alerting them of the registration
 				//wp_new_user_notification($new_user_id);
