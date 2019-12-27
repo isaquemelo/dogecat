@@ -8403,40 +8403,40 @@ img#wpstats {
   border-left: 0;
 }
 .widget_tag_cloud a:nth-child(1) {
-  font-size: 31px !important;
-}
-.widget_tag_cloud a:nth-child(2) {
-  font-size: 20px !important;
-}
-.widget_tag_cloud a:nth-child(3) {
   font-size: 27px !important;
 }
-.widget_tag_cloud a:nth-child(4) {
+.widget_tag_cloud a:nth-child(2) {
+  font-size: 14px !important;
+}
+.widget_tag_cloud a:nth-child(3) {
   font-size: 24px !important;
+}
+.widget_tag_cloud a:nth-child(4) {
+  font-size: 20px !important;
 }
 .widget_tag_cloud a:nth-child(5) {
-  font-size: 26px !important;
+  font-size: 22px !important;
 }
 .widget_tag_cloud a:nth-child(6) {
-  font-size: 26px !important;
+  font-size: 32px !important;
 }
 .widget_tag_cloud a:nth-child(7) {
-  font-size: 16px !important;
+  font-size: 29px !important;
 }
 .widget_tag_cloud a:nth-child(8) {
-  font-size: 23px !important;
+  font-size: 13px !important;
 }
 .widget_tag_cloud a:nth-child(9) {
-  font-size: 19px !important;
+  font-size: 22px !important;
 }
 .widget_tag_cloud a:nth-child(10) {
-  font-size: 32px !important;
+  font-size: 19px !important;
 }
 .widget_tag_cloud a:nth-child(11) {
-  font-size: 32px !important;
+  font-size: 25px !important;
 }
 .widget_tag_cloud a:nth-child(12) {
-  font-size: 24px !important;
+  font-size: 18px !important;
 }
 
 .wp-video-shortcode {
@@ -8596,15 +8596,17 @@ select {
 }
 .home-wrapper .buttons .novo-animal {
   background-color: #f9bb4b;
-  padding: 13px 20px;
+  padding: 15px 20px;
+  display: inline-block;
   color: white;
   border-radius: 3px;
   font-weight: bold;
   text-decoration: none;
 }
 .home-wrapper .buttons .nova-consulta {
+  display: inline-block;
   border: 1px solid #f9bb4b;
-  padding: 13px 20px;
+  padding: 15px 20px;
   color: #f9bb4b;
   border-radius: 3px;
   font-weight: bold;
@@ -8612,7 +8614,7 @@ select {
 }
 .home-wrapper .ir-animal input {
   border: 2px solid #f9bb4b;
-  padding: 10px 15px;
+  padding: 15px 15px;
   height: 46px;
   border-radius: 5px;
   outline: none;
@@ -8629,6 +8631,17 @@ select {
   color: white;
   padding: 0px 30px;
   background-color: #f9bb4b;
+}
+.home-wrapper .animal-section {
+  margin-top: 15px;
+}
+.home-wrapper .list-header, .home-wrapper .list-header div, .home-wrapper .list-data, .home-wrapper .list-data div {
+  padding: 0px;
+  font-size: 16px;
+}
+.home-wrapper .list-data, .home-wrapper .list-data div {
+  color: #9A9A9A;
+  padding-top: 6px;
 }
 
 body {

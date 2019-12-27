@@ -58,8 +58,13 @@ get_header();
 				</div>
 
 				<div class="buttons col-md-12 no-padding">
+				<?php if (wp_get_current_user()->roles[0] == "um_veterinario"): ?>
+					<a href="<?php echo home_url() . '/nova-consulta'; ?>" class="nova-consulta col-md-12 text-center">Nova consulta</a>
+				<?php else: ?>
 					<a href="<?php echo home_url() . '/cadastrar-animal'; ?> " class="novo-animal">Cadastrar novo animal</a>
-					<a href="<?php echo home_url() . '/cadastrar-veterinario'; ?>" class="nova-consulta">Nova consulta</a>
+					<a href="<?php echo home_url() . '/nova-consulta'; ?>" class="nova-consulta">Nova consulta</a>
+
+				<?php endif; ?>
 				</div>
 
 				<div class="ir-animal col-md-12 no-padding">
@@ -72,7 +77,7 @@ get_header();
 				</div>
 
 
-				<div class="col-md-12 no-padding content-holder">
+				<div class="col-md-12 animal-section no-padding content-holder">
 
 					<div class="content-title">
 						<span>Animais</span>
@@ -89,7 +94,7 @@ get_header();
 							$temp = $wp_query;
 							$wp_query = null;
 							$wp_query = new WP_Query();
-							$wp_query->query('showposts=20&post_type=animal'.'&paged='.$paged);
+							$wp_query->query('showposts=10&post_type=animal'.'&paged='.$paged);
 
 						?>
 
@@ -105,28 +110,57 @@ get_header();
 
 						<?php endwhile; ?>
 
-						<?php odin_paging_nav() ?>
+						<?php //odin_paging_nav() ?>
 
 
 
 					</div>
 
 				</div>
+			</div>
+
+
+			<div class="col-md-7">
+				<div class="col-md-12 consulta-section no-padding content-holder">
+
+					<div class="content-title">
+						<span>Últimas consultas</span>
+					</div>
+
+					<div class="list">
+						<div class="list-header col-md-12 no-padding">
+								<div class="col-md-2 no-padding">Cód.</div>
+								<div class="col-md-4 no-padding">Data</div>
+								<div class="col-md-6 no-padding">Procedimentos</div>
+						</div>
+
+						<?php
+							$temp = $wp_query;
+							$wp_query = null;
+							$wp_query = new WP_Query();
+							$wp_query->query('showposts=5&post_type=consulta'.'&paged='.$paged);
+
+						?>
+
+
+						<?php while ($wp_query->have_posts()) : $wp_query->the_post(); ?>
+							<div class="list-data col-md-12 no-padding">
+									<a href="<?php the_permalink() ?>">
+										<div class="col-md-2">#<?php echo get_the_ID(); ?></div>
+										<div class="col-md-4"><?php echo explode(" ", get_field('data'))[0]; ?></div>
+										<div class="col-md-6" ><?php the_field('procedimentos'); ?></div>
+									</a>
+							</div>
+
+						<?php endwhile; ?>
+
+						<?php //odin_paging_nav() ?>
 
 
 
+					</div>
 
-
-
-
-
-
-
-
-
-
-
-
+				</div>
 			</div>
 
 

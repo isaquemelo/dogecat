@@ -4,7 +4,8 @@
 		margin-bottom: 25px;
 		.novo-animal {
 			background-color: $yellow;
-			padding: 13px 20px;
+			padding: 15px 20px;
+			display: inline-block;
 			color: white;
 			border-radius: 3px;
 			font-weight: bold;
@@ -12,8 +13,9 @@
 		}
 
 		.nova-consulta {
+			display: inline-block;
 			border: 1px solid $yellow;
-			padding: 13px 20px;
+			padding: 15px 20px;
 			color: $yellow;
 			border-radius: 3px;
 			font-weight: bold;
@@ -24,7 +26,7 @@
 	.ir-animal {
 		input {
 			border: 2px solid $yellow;
-			padding: 10px 15px;
+			padding: 15px 15px;
 			height: 46px;
 			border-radius: 5px;
 			outline: none;
@@ -46,4 +48,17 @@
 			background-color: $yellow;
 		}
 	}
+
+	.animal-section {
+		margin-top: 15px;
+	}
+
+	.list-header, .list-header div, .list-data, .list-data div  {
+		padding: 0px;
+		font-size: 16px;
+	  }
+	  .list-data, .list-data div {
+		color: $grey;
+		padding-top: 6px;
+	  }
 }

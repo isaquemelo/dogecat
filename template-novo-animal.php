@@ -16,29 +16,15 @@ if (!is_user_logged_in()) {
 
 $postTitleError = '';
 
-if(isset($_POST['submitted']) && isset($_POST['post_nonce_field']) && wp_verify_nonce($_POST['post_nonce_field'], 'post_nonce')) {
+if($_SERVER['REQUEST_METHOD'] === 'POST') {
+	$post_url = "este_eh_o_link";
+	$post_title = "Esse eh o titulo do post";
+	$author   = "O outor desse negocio";
+	$subject  = 'Post publish notification';
+	$message  = "Hello,";
+	$message .= "<a href='". $post_url. "'>'".$post_title."'</a>\n\n";
+	wp_mail("isaquegbmelo2@gmail.com", $subject, $message );
 
-	if(trim($_POST['postTitle']) === '') {
-		$postTitleError = 'Please enter a title.';
-		$hasError = true;
-	} else {
-		$postTitle = trim($_POST['postTitle']);
-	}
-
-
-	$post_information = array(
-		'post_title' => esc_attr(strip_tags($_POST['postTitle'])),
-		'post_content' => esc_attr(strip_tags($_POST['postContent'])),
-		'post_type' => 'animal',
-		'post_status' => 'publised'
-	);
-
-	if (is_user_logged_in()){
-		$post_id = wp_insert_post($post_information);
-		echo $post_id;
-	} else {
-		auth_redirect();
-	}
 }
 
 
