@@ -78,7 +78,7 @@ get_header();
 
             </div>
 
-            <div class="cota-mensal col-md-7 no-padding col-sm-12">
+            <div class="cota-mensal col-md-6 no-padding col-sm-12">
 
                 <?php
 				$connected = new WP_Query( array(
@@ -134,7 +134,7 @@ get_header();
 
             </div>
 
-            <div class="actions col-md-2">
+            <div class="actions col-md-3">
 
                 <?php if( !(get_post_status() == 'trash') ) : ?>
 
@@ -149,11 +149,31 @@ get_header();
 						$edit_page_id = 121;
 						$edit_post = add_query_arg( 'animal', get_the_ID(), get_permalink(
 							$edit_page_id+ $_POST['_wp_http_referer'] ) );
-					?>
+				?>
 
                 <a href="<?php echo $edit_post; ?>">
                     <i class="fas fa-edit"></i>
                 </a>
+
+				<?php
+						$plans = [
+							'Plano A' => 1,
+							'Plano B' => 2,
+							'Plano C' => 3,
+							'Plano D' => 3, //retirar versão final
+						];
+
+						$plans_page_id = 211;
+						$plans_redirect = add_query_arg( 'plano', $plans[get_field('plano')], get_permalink(
+							$plans_page_id + $_POST['_wp_http_referer'] ) );
+
+
+				?>
+
+				<a href="JavaScript:window.open(<?= "'" . $plans_redirect . "'" ?>,'popUpWindow','height=500,width=500,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes')" >
+                	<i class="fas fa-info-circle"></i>
+                </a>
+
                 <a href="" onclick="print()">
                     <i class="fas fa-print"></i>
                 </a>
@@ -419,4 +439,12 @@ get_header();
 </div>
 
 
+
+<script>
+// Popup window function
+function basicPopup(url) {
+	popupWindow = window.open(url,'popUpWindow','height=500,width=500,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes');
+}
+
+</script>
 <?php get_footer(); ?>
