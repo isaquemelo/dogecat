@@ -43,138 +43,177 @@ get_header();
 
 
 <div id="primary" class="single-animal-holder col-md-12">
-	<?php get_sidebar(); ?>
-	<div class="col-md-9 content-holder">
-		<?php if(!$is_consulta): ?>
-	      	<div class="animal-header">
-	  			<div class="content-title col-md-3 no-padding">
-	  				<span class=""><?php the_field('nome'); ?></span>
-	         		<span class="animal-id">#<?php echo get_the_ID(); ?></span>
+    <?php get_sidebar(); ?>
+    <div class="col-md-9 content-holder">
+        <?php if(!$is_consulta): ?>
+        <div class="animal-header">
+            <div class="content-title col-md-3 no-padding">
+                <span class=""><?php the_field('nome'); ?></span>
+                <span class="animal-id">#<?php echo get_the_ID(); ?></span>
 
-						<form class="" action="" method="POST">
-							<input type="text" value="<?php the_field('nome'); ?>" class="hidden" name="nome">
-							<input type="text" value="<?php the_field('raca'); ?>" class="hidden" name="raca">
-							<input type="text" value="<?php the_field('sexo_animal'); ?>" class="hidden" name="sexo">
-							<input type="text" value="<?php the_field('vacinas'); ?>" class="hidden" name="vacinas">
-							<input type="text" value="<?php the_field('plano'); ?>" class="hidden" name="plano">
-							<input type="text" value="<?php the_field('nome_do_dono'); ?>" class="hidden" name="dono">
-							<input type="text" value="<?php the_field('cpf_dono'); ?>" class="hidden" name="cpf">
-							<input type="text" value="<?php echo get_the_ID();  ?>" class="hidden" name="id">
-							<input type="text" value="<?php $end = array('rua' => get_field('rua'),
+                <form class="" action="" method="POST">
+                    <input type="text" value="<?php the_field('nome'); ?>" class="hidden" name="nome">
+                    <input type="text" value="<?php the_field('raca'); ?>" class="hidden" name="raca">
+                    <input type="text" value="<?php the_field('sexo_animal'); ?>" class="hidden" name="sexo">
+                    <input type="text" value="<?php the_field('vacinas'); ?>" class="hidden" name="vacinas">
+                    <input type="text" value="<?php the_field('plano'); ?>" class="hidden" name="plano">
+                    <input type="text" value="<?php the_field('nome_do_dono'); ?>" class="hidden" name="dono">
+                    <input type="text" value="<?php the_field('cpf_dono'); ?>" class="hidden" name="cpf">
+                    <input type="text" value="<?php echo get_the_ID();  ?>" class="hidden" name="id">
+                    <input type="text" value="<?php $end = array('rua' => get_field('rua'),
 													 'cidade' => get_field('cidade'),
 													 'estado' => get_field('estado')
 							);
 
 							 echo "{$end['rua']}". ", ". "{$end['cidade']} - {$end['estado']}"; ?>" class="hidden" name="endereco">
-							<input type="text" value="<?php the_field('telefone'); ?>" class="hidden" name="telefone">
-							<input type="text" value="<?php the_field('celular'); ?>" class="hidden" name="celular">
+                    <input type="text" value="<?php the_field('telefone'); ?>" class="hidden" name="telefone">
+                    <input type="text" value="<?php the_field('celular'); ?>" class="hidden" name="celular">
 
-							<input class="nova-consulta-btn default-btn col-md-11" type="submit" name="" value="Nova consulta">
-							<?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
-							<input type="hidden" name="submitted" id="submitted" value="true">
-						</form>
+                    <input class="nova-consulta-btn default-btn col-md-11" type="submit" name="" value="Nova consulta">
+                    <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
+                    <input type="hidden" name="submitted" id="submitted" value="true">
+                </form>
 
 
 
-	  			</div>
+            </div>
 
-		        <div class="cota-mensal col-md-7 no-padding col-sm-12">
+            <div class="cota-mensal col-md-7 no-padding col-sm-12">
 
-		          <div class="col-md-12">
-		            <span class="cota-title">Cota mensal:</span>
-		          </div>
+                <?php
+				$connected = new WP_Query( array(
+					'relationship' => array(
+							'id'   => 'animal_to_consulta',
+							'from' => get_the_ID(), // You can pass object ID or full object
+					),
+					'nopaging'     => true,
+				) );
 
-		          <div class="col-md-12">
-		            <span class="cota-info"> O usuário pode realizar: </span>
-		          </div>
+				$procedures = [];
 
-		          <div class="col-md-12">
-		            <span class="cota-cota"> 1 vacina  </span>
-		            <span class="cota-cota"> 1 castração </span>
-		            <span class="cota-cota"> 2 consultas </span>
-		          </div>
+				while ( $connected->have_posts() ) : $connected->the_post();
+						$post_procedures = get_field('procedimentos');
+						$field = get_field('data');
+						$field = substr($field, 0, 10);
+						$field = explode("/", $field );
 
-		        </div>
 
-		        <div class="actions col-md-2">
+						if ($field[1] == getdate()['mon'] && $field[2] == getdate()['year']):
+							foreach ($post_procedures as $procedure) {
+								if (array_key_exists($procedure, $procedures)){
+									$procedures[$procedure] += 1;
+								} else {
+									$procedures[$procedure] = 1;
+								}
+							}
+						endif;
+				?>
 
-		        	<?php if( !(get_post_status() == 'trash') ) : ?>
 
-					    <a onclick="return confirm('Tem certeza que deseja excluir esse animal?')"href="<?php echo get_delete_post_link( get_the_ID() ); ?>">
-					    	<i class="fas fa-trash"></i>
-					    </a>
 
-					<?php endif; ?>
+                <?php
+				endwhile;
+				wp_reset_postdata();
+				?>
 
-					<?php
+
+                <div class="col-md-12">
+                    <span class="cota-title">Executados no mês:</span>
+                </div>
+
+                <div class="col-md-12">
+                    <span class="cota-info"> O usuário realizou: </span>
+                </div>
+
+                <div class="col-md-12">
+					<?php foreach ($procedures as $key=>$value): ?>
+                    <span class="cota-cota"> <?= $value  . " - " . $key ?> </span>
+					<br>
+					<?php endforeach; ?>
+                </div>
+
+            </div>
+
+            <div class="actions col-md-2">
+
+                <?php if( !(get_post_status() == 'trash') ) : ?>
+
+                <a onclick="return confirm('Tem certeza que deseja excluir esse animal?')"
+                    href="<?php echo get_delete_post_link( get_the_ID() ); ?>">
+                    <i class="fas fa-trash"></i>
+                </a>
+
+                <?php endif; ?>
+
+                <?php
 						$edit_page_id = 121;
 						$edit_post = add_query_arg( 'animal', get_the_ID(), get_permalink(
 							$edit_page_id+ $_POST['_wp_http_referer'] ) );
 					?>
 
-		        	<a href="<?php echo $edit_post; ?>">
-		        		<i class="fas fa-edit"></i>
-		        	</a>
-		        	<a href="" onclick="print()">
-		        		<i class="fas fa-print"></i>
-		        	</a>
+                <a href="<?php echo $edit_post; ?>">
+                    <i class="fas fa-edit"></i>
+                </a>
+                <a href="" onclick="print()">
+                    <i class="fas fa-print"></i>
+                </a>
 
 
 
-		        </div>
+            </div>
 
-  			</div>
-
-
-		<?php else: ?>
-			<div class="content-title">
-				<span>Nova consulta</span>
-			</div>
-		<?php endif; ?>
+        </div>
 
 
-		<div class="animal-dados">
-	     	<div class="animal-data subtitle">Dados:</div>
-
-        	<div class="dados-container">
-	             <div class="animal-nome">
-	               Nome:
-	               <span class="bold-font"><?php the_field('nome'); ?></span>
-	             </div>
-
-	             <div class="animal-raca">
-	               Raça:
-	               <span class="bold-font"><?php the_field('raca'); ?></span>
-	             </div>
-
-	             <div class="animal-sexo">
-	               Sexo animal:
-	               <span class="bold-font"><?php the_field('sexo_animal'); ?></span>
-	             </div>
-
-	             <div class="animal-vacinas">
-	               Vacinas:
-	               <span class="bold-font"><?php the_field('vacinas'); ?></span>
-	             </div>
-
-	            <div class="animal-plano">
-	               Plano:
-	               <span class="bold-font"><?php the_field('plano'); ?></span>
-	             </div>
+        <?php else: ?>
+        <div class="content-title">
+            <span>Nova consulta</span>
+        </div>
+        <?php endif; ?>
 
 
-	             <div class="animal-dono">
-	               Nome do dono:
-	               <span class="bold-font"><?php the_field('nome_do_dono'); ?></span>
-	             </div>
+        <div class="animal-dados">
+            <div class="animal-data subtitle">Dados:</div>
 
-	             <div class="animal-cpf">
-	               CPF:
-	               <span class="bold-font"><?php the_field('cpf_dono'); ?></span>
-	             </div>
+            <div class="dados-container">
+                <div class="animal-nome">
+                    Nome:
+                    <span class="bold-font"><?php the_field('nome'); ?></span>
+                </div>
 
-	             <div class="animal-end">
-	               <?php
+                <div class="animal-raca">
+                    Raça:
+                    <span class="bold-font"><?php the_field('raca'); ?></span>
+                </div>
+
+                <div class="animal-sexo">
+                    Sexo animal:
+                    <span class="bold-font"><?php the_field('sexo_animal'); ?></span>
+                </div>
+
+                <div class="animal-vacinas">
+                    Vacinas:
+                    <span class="bold-font"><?php the_field('vacinas'); ?></span>
+                </div>
+
+                <div class="animal-plano">
+                    Plano:
+                    <span class="bold-font"><?php the_field('plano'); ?></span>
+                </div>
+
+
+                <div class="animal-dono">
+                    Nome do dono:
+                    <span class="bold-font"><?php the_field('nome_do_dono'); ?></span>
+                </div>
+
+                <div class="animal-cpf">
+                    CPF:
+                    <span class="bold-font"><?php the_field('cpf_dono'); ?></span>
+                </div>
+
+                <div class="animal-end">
+                    <?php
 	                $end = array('rua' => get_field('rua'),
 	                             'cidade' => get_field('cidade'),
 	                             'estado' => get_field('estado')
@@ -183,21 +222,22 @@ get_header();
 									$end_concat = "{$end['rua']}". ", ". "{$end['cidade']} - {$end['estado']}"
 
 	               ?>
-	               Endereço:
-	               <span class="bold-font"><?php echo "{$end['rua']}". ", ". "{$end['cidade']} - {$end['estado']}"; ?></span>
-	             </div>
+                    Endereço:
+                    <span
+                        class="bold-font"><?php echo "{$end['rua']}". ", ". "{$end['cidade']} - {$end['estado']}"; ?></span>
+                </div>
 
-	             <div class="animal-telefone">
-	               Telefone: <span class="bold-font"><?php the_field('telefone'); ?></span>
-	             </div>
+                <div class="animal-telefone">
+                    Telefone: <span class="bold-font"><?php the_field('telefone'); ?></span>
+                </div>
 
-	             <div class="animal-celular">
-	               Celular: <span class="bold-font"><?php the_field('celular'); ?></span>
-	             </div>
+                <div class="animal-celular">
+                    Celular: <span class="bold-font"><?php the_field('celular'); ?></span>
+                </div>
 
-        	</div>
+            </div>
 
-			<?php
+            <?php
 			 $connected = new WP_Query( array(
 					 'relationship' => array(
 							 'id'   => 'animal_to_consulta',
@@ -209,23 +249,23 @@ get_header();
 			 if ($connected->have_posts()):
 
 			?>
-				<?php if (!$is_consulta): ?>
-				<div class="animal-data subtitle consulta-title">
-	     			Consultas:
-	   			</div>
+            <?php if (!$is_consulta): ?>
+            <div class="animal-data subtitle consulta-title">
+                Consultas:
+            </div>
 
-				<div class="list-header col-md-12">
-							<div class="col-md-2">Cód.</div>
-							<div class="col-md-3">Data</div>
-							<div class="col-md-6">Procedimentos</div>
-				</div>
-				<?php endif; ?>
+            <div class="list-header col-md-12">
+                <div class="col-md-2">Cód.</div>
+                <div class="col-md-3">Data</div>
+                <div class="col-md-6">Procedimentos</div>
+            </div>
+            <?php endif; ?>
 
-			<?php endif; ?>
+            <?php endif; ?>
 
-			<div class="consultas-holder col-md-12 no-padding">
+            <div class="consultas-holder col-md-12 no-padding">
 
-			 <?php if (!$is_consulta):
+                <?php if (!$is_consulta):
 				 $connected = new WP_Query( array(
 						 'relationship' => array(
 								 'id'   => 'animal_to_consulta',
@@ -235,41 +275,41 @@ get_header();
 				 ) );
 				 while ( $connected->have_posts() ) : $connected->the_post();
 						 ?>
-						 <a href="<?php the_permalink(); ?>" class="single-consulta-item col-md-12">
-								 <div class="col-md-2 no-padding"><?php echo get_the_ID(); ?></div>
-	 	 						 <div class="col-md-3 no-padding"><?php the_field('data'); ?></div>
-	 	 						 <div class="col-md-6 no-padding"><?php the_field('procedimentos'); ?></div>
+                <a href="<?php the_permalink(); ?>" class="single-consulta-item col-md-12">
+                    <div class="col-md-2 no-padding"><?php echo get_the_ID(); ?></div>
+                    <div class="col-md-3 no-padding"><?php the_field('data'); ?></div>
+                    <div class="col-md-6 no-padding"><?php the_field('procedimentos'); ?></div>
 
 
-						 </a>
+                </a>
 
-						 <?php
+                <?php
 				 endwhile;
 				 wp_reset_postdata();
 
 
 				 ?>
 
-			</div>
+            </div>
 
 
-			<div class="fotos">
-				 <div class="subtitle">Fotos:</div>
-		           <?php
+            <div class="fotos">
+                <div class="subtitle">Fotos:</div>
+                <?php
 		           $images = get_field('imagens');
 		           $size = 'full'; // (thumbnail, medium, large, full or custom size)
 		           if( $images ): ?>
-		               <ul>
-		                   <?php foreach( $images as $image_id ): ?>
+                <ul>
+                    <?php foreach( $images as $image_id ): ?>
 
-		                           <img src="<?php echo $image_id; ?>" alt="" width="150">
+                    <img src="<?php echo $image_id; ?>" alt="" width="150">
 
-		                   <?php endforeach; ?>
-		               </ul>
-		           <?php endif; ?>
-		 	</div>
-			<?php else: ?>
-				<?php
+                    <?php endforeach; ?>
+                </ul>
+                <?php endif; ?>
+            </div>
+            <?php else: ?>
+            <?php
 					acf_form(array(
 						'post_id'		=> 'new_post',
 						'post_title'	=> false,
@@ -285,58 +325,58 @@ get_header();
 				?>
 
 
-			<?php endif; ?>
+            <?php endif; ?>
 
-		</div>
+        </div>
 
-	</div>
+    </div>
 
 </div><!-- #primary END -->
 
 <div class="carteirinha">
 
 
-	<div class="animal-data subtitle">Dados:</div>
+    <div class="animal-data subtitle">Dados:</div>
 
-	<div class="dados-container">
-         <div class="animal-nome">
-           Nome:
-           <span class="bold-font"><?php the_field('nome'); ?></span>
-         </div>
+    <div class="dados-container">
+        <div class="animal-nome">
+            Nome:
+            <span class="bold-font"><?php the_field('nome'); ?></span>
+        </div>
 
-         <div class="animal-raca">
-           Raça:
-           <span class="bold-font"><?php the_field('raca'); ?></span>
-         </div>
+        <div class="animal-raca">
+            Raça:
+            <span class="bold-font"><?php the_field('raca'); ?></span>
+        </div>
 
-         <div class="animal-sexo">
-           Sexo animal:
-           <span class="bold-font"><?php the_field('sexo_animal'); ?></span>
-         </div>
+        <div class="animal-sexo">
+            Sexo animal:
+            <span class="bold-font"><?php the_field('sexo_animal'); ?></span>
+        </div>
 
-         <div class="animal-vacinas">
-           Vacinas:
-           <span class="bold-font"><?php the_field('vacinas'); ?></span>
-         </div>
+        <div class="animal-vacinas">
+            Vacinas:
+            <span class="bold-font"><?php the_field('vacinas'); ?></span>
+        </div>
 
         <div class="animal-plano">
-           Plano:
-           <span class="bold-font"><?php the_field('plano'); ?></span>
-         </div>
+            Plano:
+            <span class="bold-font"><?php the_field('plano'); ?></span>
+        </div>
 
 
-         <div class="animal-dono">
-           Nome do dono:
-           <span class="bold-font"><?php the_field('nome_do_dono'); ?></span>
-         </div>
+        <div class="animal-dono">
+            Nome do dono:
+            <span class="bold-font"><?php the_field('nome_do_dono'); ?></span>
+        </div>
 
-         <div class="animal-cpf">
-           CPF:
-           <span class="bold-font"><?php the_field('cpf_dono'); ?></span>
-         </div>
+        <div class="animal-cpf">
+            CPF:
+            <span class="bold-font"><?php the_field('cpf_dono'); ?></span>
+        </div>
 
-         <div class="animal-end">
-           <?php
+        <div class="animal-end">
+            <?php
             $end = array('rua' => get_field('rua'),
                          'cidade' => get_field('cidade'),
                          'estado' => get_field('estado')
@@ -345,35 +385,35 @@ get_header();
 							$end_concat = "{$end['rua']}". ", ". "{$end['cidade']} - {$end['estado']}"
 
            ?>
-           Endereço:
-           <span class="bold-font"><?php echo "{$end['rua']}". ", ". "{$end['cidade']} - {$end['estado']}"; ?></span>
-         </div>
+            Endereço:
+            <span class="bold-font"><?php echo "{$end['rua']}". ", ". "{$end['cidade']} - {$end['estado']}"; ?></span>
+        </div>
 
-         <div class="animal-telefone">
-           Telefone: <span class="bold-font"><?php the_field('telefone'); ?></span>
-         </div>
+        <div class="animal-telefone">
+            Telefone: <span class="bold-font"><?php the_field('telefone'); ?></span>
+        </div>
 
-         <div class="animal-celular">
-           Celular: <span class="bold-font"><?php the_field('celular'); ?></span>
-         </div>
+        <div class="animal-celular">
+            Celular: <span class="bold-font"><?php the_field('celular'); ?></span>
+        </div>
 
-	</div>
+    </div>
 
-	<div class="fotos">
-				 <div class="subtitle">Fotos:</div>
-		           <?php
+    <div class="fotos">
+        <div class="subtitle">Fotos:</div>
+        <?php
 		           $images = get_field('imagens');
 		           $size = 'full'; // (thumbnail, medium, large, full or custom size)
 		           if( $images ): ?>
-		               <ul>
-		                   <?php foreach( $images as $image_id ): ?>
+        <ul>
+            <?php foreach( $images as $image_id ): ?>
 
-		                           <img src="<?php echo $image_id; ?>" alt="" width="150">
+            <img src="<?php echo $image_id; ?>" alt="" width="150">
 
-		                   <?php endforeach; ?>
-		               </ul>
-		           <?php endif; ?>
- 	</div>
+            <?php endforeach; ?>
+        </ul>
+        <?php endif; ?>
+    </div>
 
 
 </div>
