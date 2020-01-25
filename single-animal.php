@@ -297,7 +297,15 @@ get_header();
                     <i class="fas fa-info-circle"></i>
                 </a>
 
-                <a href="" onclick="print()">
+				<?php
+
+				$carteirinha_page_id = 312;
+				$carteirinha_redirect = add_query_arg( 'animal_id', get_the_ID(), get_permalink(
+					$carteirinha_page_id + $_POST['_wp_http_referer'] ) );
+
+				?>
+
+                <a href="<?= $carteirinha_redirect ?>">
                     <i class="fas fa-print"></i>
                 </a>
 
