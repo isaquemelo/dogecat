@@ -17,6 +17,40 @@ function a_post_exists($id) {
 }
 
 
+$plans = [
+	'Plano A' => 1,
+	'Plano B' => 2,
+	'Plano C' => 3,
+	'Plano D' => 3, //retirar versão final
+];
+
+$consulta_types = [
+	"Consultas urgência - emergência" => 1,
+	"Consulta clinico geral" => 2,
+	"Consulta especialista" => 3,
+	"Atendimento domiciliar" => 4,
+];
+
+
+// consulta_id => time_to_use
+$consulta_time_to_allow = [
+	1 => 30,
+	2 => 30,
+	3 => 60,
+	4 => 60,
+];
+
+// plan_id => [...consulta_types_allowed]
+$plan_allow = [
+	1 => [1, 2, 3, 4],
+	2 => [1, 2, 4],
+	3 => [2]
+];
+
+
+
+
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 	if(isset($_POST['submitted']) && isset($_POST['post_nonce_field']) && wp_verify_nonce($_POST['post_nonce_field'], 'post_nonce')) {
 		$animal_id = $_POST['cod'];
@@ -25,6 +59,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 			if (strcmp($post_type, "animal") == 0) {
 				$post = get_post($animal_id);
 				$requested = true;
+				wp_redirect(home_url() . "/animal/" . $animal_id);
+
 			} else {
 				$requested = null;
 			}
@@ -35,10 +71,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 	}
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && $_GET['nova_consulta']) {
-	MB_Relationships_API::add( $_GET['animal_id'], $_GET['consulta_id'], 'animal_to_consulta' );
-	wp_redirect(home_url() . "/animal/" . $_GET['animal_id']);
-}
 
 acf_form_head();
 get_header();
@@ -66,83 +98,8 @@ get_header();
 
 			<?php elseif ($requested == null): ?>
 				<h3> Animal não cadastrado. </h3>
-			<?php elseif ($requested == true): ?>
-				<div class="dados-container">
-					<div class="animal-nome">
-					Nome:
-					<span class="bold-font"><?php the_field('nome'); ?></span>
-					</div>
 
-					<div class="animal-raca">
-					Raça:
-					<span class="bold-font"><?php the_field('raca'); ?></span>
-					</div>
-
-					<div class="animal-sexo">
-					Sexo animal:
-					<span class="bold-font"><?php the_field('sexo_animal'); ?></span>
-					</div>
-
-					<div class="animal-vacinas">
-					Vacinas:
-					<span class="bold-font"><?php the_field('vacinas'); ?></span>
-					</div>
-
-					<div class="animal-plano">
-					Plano:
-					<span class="bold-font"><?php the_field('plano'); ?></span>
-					</div>
-
-
-					<div class="animal-dono">
-					Nome do dono:
-					<span class="bold-font"><?php the_field('nome_do_dono'); ?></span>
-					</div>
-
-					<div class="animal-cpf">
-					CPF:
-					<span class="bold-font"><?php the_field('cpf_dono'); ?></span>
-					</div>
-
-					<div class="animal-end">
-					<?php
-					$end = array('rua' => get_field('rua'),
-									'cidade' => get_field('cidade'),
-									'estado' => get_field('estado')
-					);
-
-									$end_concat = "{$end['rua']}". ", ". "{$end['cidade']} - {$end['estado']}"
-
-					?>
-					Endereço:
-					<span class="bold-font"><?php echo "{$end['rua']}". ", ". "{$end['cidade']} - {$end['estado']}"; ?></span>
-					</div>
-
-					<div class="animal-telefone">
-					Telefone: <span class="bold-font"><?php the_field('telefone'); ?></span>
-					</div>
-
-					<div class="animal-celular">
-					Celular: <span class="bold-font"><?php the_field('celular'); ?></span>
-					</div>
-
-				</div>
-		   <?php
-				acf_form(array(
-						'post_id'		=> 'new_post',
-						'post_title'	=> false,
-						'post_content'	=> false,
-						'new_post'		=> array(
-							'post_type'		=> 'consulta',
-							'post_status'	=> 'publish',
-
-						),
-						'submit_value'  => __('Salvar consulta'),
-						'return' => '?nova_consulta=true&consulta_id=%post_id%&animal_id=' . $animal_id,
-					));
-
-
-			endif;?>
+			<?php endif;?>
 
 		</div>
 

@@ -54,10 +54,19 @@ get_header();
 					$edit_post = add_query_arg( 'animal', get_the_ID(), get_permalink(
 						$edit_page_id + $_POST['_wp_http_referer'] ) );
 				?>
+				<?php
 
-				<a href="" onclick="print()">
-					<i class="fas fa-print"></i>
-				</a>
+				$guia_page_id = 314;
+				$carteirinha_redirect = add_query_arg( 'consulta_id', get_the_ID(), get_permalink(
+					$guia_page_id + $_POST['_wp_http_referer'] ) );
+
+				?>
+
+                <a href="<?= $carteirinha_redirect ?>" target="__blank">
+                    <i class="fas fa-print"></i>
+                </a>
+
+
 
 
 

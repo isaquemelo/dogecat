@@ -322,20 +322,20 @@ get_header();
 		</script>
         <div class="content-title">
             <span>Nova consulta</span>
-        </div>
+		</div>
+		<?php
+				$adiciona_postdata_page_id = 309;
+				$edit_post = add_query_arg( 'animal', get_the_ID(), get_permalink(
+											$adiciona_postdata_page_id . $_POST['_wp_http_referer'] ) );
+			?>
+
+			<a href="<?= $edit_post ?>">ADICIONE A DATA DE REGISTRO DO ANIMAL</a>
+			<br><br>
         <?php endif; ?>
 
 		<br>
 
         <div class="animal-dados">
-			<?php
-				$adiciona_postdata_page_id = 309;
-				$edit_post = add_query_arg( 'animal', get_the_ID(), get_permalink(
-											$adiciona_postdata_page_id + $_POST['_wp_http_referer'] ) );
-			?>
-
-			<a href="<?= $edit_post ?>">ADICIONE A DATA DE REGISTRO DO ANIMAL</a>
-			<br><br>
             <div class="animal-data subtitle">Dados:</div>
 
             <div class="dados-container">
