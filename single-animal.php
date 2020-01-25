@@ -305,7 +305,7 @@ get_header();
 
 				?>
 
-                <a href="<?= $carteirinha_redirect ?>">
+                <a href="<?= $carteirinha_redirect ?>" target="__blank">
                     <i class="fas fa-print"></i>
                 </a>
 

@@ -169,10 +169,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 				<div class="name-content"> <?= get_post_meta($animalId, "raca")[0] ?> </div>
 			</div>
 
-			<div class="vencimento">
+
+
+			<div class="name">
+				<div> Plano: </div>
+				<div class="name-content"> <?= get_post_meta($animalId, "plano")[0] ?> </div>
+			</div>
+
+			<div class="name">
 				<div> Data de Cadastro: </div>
 				<div class="name-content"> <?= get_the_date("d/m/Y", get_the_ID()) ?> </div>
 			</div>
+
 
 		</section>
 	</div>
