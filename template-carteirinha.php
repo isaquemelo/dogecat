@@ -30,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 		padding: 0.2cm;
 		width: fit-content;
 		border-radius: 24px;
+		background-color: #f9bb4b;
 	}
 
 	.carteirinha {
@@ -39,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 		background-size: 25.5cm;
 		border-radius: 24px;
 		padding: 15px;
+		background-color: white;
 	}
 
 	.logo {
