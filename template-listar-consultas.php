@@ -37,7 +37,7 @@ get_header();
 
 				foreach ($users as $user): ?>
 					<option value="<?= $user->ID ?>" <?= $user->ID == $_GET['author_id']? 'selected' : null ?>>
-						<?= $user->display_name ?>
+						<?= (get_user_meta($user->ID, "crmv")[0] != ""? get_user_meta($user->ID, "crmv")[0] : "Sem CRMV") . " - " . $user->display_name ?>
 					</option>
 
 
