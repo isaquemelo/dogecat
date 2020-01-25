@@ -134,6 +134,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 		color: #f9bb4b;
 	}
 
+	.carteirinha_wrapper.verso {
+		transform: rotate(-180deg);
+		margin-top: -2px;
+	}
+
 </style>
 
 <div class="carteirinha_wrapper">
@@ -188,7 +193,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
 
 
-<div class="carteirinha_wrapper">
+<div class="carteirinha_wrapper verso">
 	<div class="carteirinha">
 		<header class="v">
 			<div class="logo_v">
