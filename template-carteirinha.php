@@ -43,13 +43,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 		background-color: white;
 	}
 
-	.logo {
+	.logo, .logo_v {
 		width: fit-content;
 	    display: inline-block;
 	}
 
+	.logo_v {
+		display: flex;
+		justify-content: center;
+	}
+
 	.logo img {
 		width: 125px;
+	}
+
+	.logo_v img {
+		width: 45%;
 	}
 
 	.animal-id {
@@ -59,7 +68,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 		font-weight: 900;
 	}
 
-	header {
+	header.f {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	header.v {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -112,49 +127,76 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 		width: inherit;
 	}
 
+	.content {
+		font-weight: bold;
+		text-align: center;
+		padding: -0 20px;
+		color: #f9bb4b;
+	}
+
 </style>
 
 <div class="carteirinha_wrapper">
-<div class="carteirinha">
-	<header>
-		<div class="logo">
-			<img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="">
-		</div>
+	<div class="carteirinha">
+		<header class="f">
+			<div class="logo">
+				<img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="">
+			</div>
 
-		<div class="animal-id"> #<?= $animalId ?> </div>
+			<div class="animal-id"> #<?= $animalId ?> </div>
 
-		<?php
-		$image = get_post_meta($animalId, 'imagens');
-		$image_url = wp_get_attachment_url($image[0][0]);
-		?>
+			<?php
+			$image = get_post_meta($animalId, 'imagens');
+			$image_url = wp_get_attachment_url($image[0][0]);
+			?>
 
-		<div class="animal-pic">
-			<img src="<?= $image_url ?>" alt="">
-		</div>
+			<div class="animal-pic">
+				<img src="<?= $image_url ?>" alt="">
+			</div>
 
-	</header>
+		</header>
 
 
 
-	<section>
-		<div class="name">
-			<div> Nome: </div>
-			<div class="name-content"> <?= get_post_meta($animalId, "nome")[0] ?> </div>
-		</div>
+		<section>
+			<div class="name">
+				<div> Nome: </div>
+				<div class="name-content"> <?= get_post_meta($animalId, "nome")[0] ?> </div>
+			</div>
 
-		<div class="name">
-			<div> Raça: </div>
-			<div class="name-content"> <?= get_post_meta($animalId, "raca")[0] ?> </div>
-		</div>
+			<div class="name">
+				<div> Raça: </div>
+				<div class="name-content"> <?= get_post_meta($animalId, "raca")[0] ?> </div>
+			</div>
 
-		<div class="vencimento">
-			<div> Data de Cadastro: </div>
-			<div class="name-content"> <?= get_the_date("d/m/Y", get_the_ID()) ?> </div>
-		</div>
+			<div class="vencimento">
+				<div> Data de Cadastro: </div>
+				<div class="name-content"> <?= get_the_date("d/m/Y", get_the_ID()) ?> </div>
+			</div>
 
-	</section>
+		</section>
+	</div>
 </div>
+
+
+
+<div class="carteirinha_wrapper">
+	<div class="carteirinha">
+		<header class="v">
+			<div class="logo_v">
+				<img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="">
+			</div>
+		</header>
+
+
+
+		<section>
+			<div class="content">
+				Dúvidas na escolha de veterinario? Ligue-nos:
+				(083) 9 9999-9999
+
+			</div>
+
+		</section>
+	</div>
 </div>
-
-
-
