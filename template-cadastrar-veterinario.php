@@ -23,7 +23,7 @@ if (isset( $_POST["user"] ) && wp_verify_nonce($_POST['pippin_register_nonce'], 
 		$user_pass		= $_POST["password"];
 		$pass_confirm 	= $_POST["password_repeat"];
 
-
+		$crmv           = $_POST['crmv'];
 		$nome_completo  = $_POST['nome_completo'];
 		$clinica        = $_POST['clinica'];
 		$celular        = $_POST['celular'];
@@ -80,6 +80,7 @@ if (isset( $_POST["user"] ) && wp_verify_nonce($_POST['pippin_register_nonce'], 
 				)
 			);
 			if($new_user_id) {
+				add_user_meta( $new_user_id, "crmv", $crmv, false);
 				add_user_meta( $new_user_id, "clinica", $clinica, false);
 				add_user_meta( $new_user_id, "nome_completo", $nome_completo, false);
 				add_user_meta( $new_user_id, "celular", $celular, false);
@@ -198,6 +199,10 @@ get_header();
 		                    <input autofocus type="number" name="numero" placeholder="Número">
 		            </div>
 
+					<div class="col-md-12">
+		                    <label>CRMV</label>
+		                    <input autofocus type="number" name="crmv" placeholder="CRMV">
+		            </div>
 
 		            <div class="col-md-12">
 		                    <label>Usuário</label>

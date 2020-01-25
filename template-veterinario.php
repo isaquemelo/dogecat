@@ -31,7 +31,7 @@ if (isset( $_POST["user"] ) && wp_verify_nonce($_POST['pippin_register_nonce'], 
 		$user_pass		= $_POST["password"];
 		$pass_confirm 	= $_POST["password_repeat"];
 
-
+		$crmv           = $_POST['crmv'];
 		$nome_completo  = $_POST['nome_completo'];
 		$clinica        = $_POST['clinica'];
 		$celular        = $_POST['celular'];
@@ -81,7 +81,8 @@ if (isset( $_POST["user"] ) && wp_verify_nonce($_POST['pippin_register_nonce'], 
 				)
 			);
 			if($new_user_id) {
-				echo "entro";
+				//echo "entro";
+				update_user_meta( $new_user_id, "crmv", $crmv, false);
 				update_user_meta( $new_user_id, "clinica", $clinica, false);
 				update_user_meta( $new_user_id, "nome_completo", $nome_completo, false);
 				update_user_meta( $new_user_id, "celular", $celular, false);
@@ -92,7 +93,7 @@ if (isset( $_POST["user"] ) && wp_verify_nonce($_POST['pippin_register_nonce'], 
 
 
 				//echo "asdasd";
-				wp_redirect("/dogecat");
+				wp_redirect(home_url());
 
 				// send an email to the admin alerting them of the registration
 				//wp_new_user_notification($new_user_id);
@@ -112,7 +113,7 @@ if (isset( $_POST["user"] ) && wp_verify_nonce($_POST['pippin_register_nonce'], 
 
 
 if (isset($_GET["delete_user"])) {
-	echo "asdssasd";
+	//echo "asdssasd";
 	wp_delete_user($vet_id);
 	wp_redirect('/dogecat/');
 	exit;
@@ -151,7 +152,11 @@ if (isset($_GET["delete_user"])) {
 		    </div>
 
 			<div class="list col-md-12 no-padding">
-	             <div class="vet-email">
+				<div class="vet-crmv">
+	               CRMV:
+	               <span class="bold-font"><?= get_the_author_meta( 'crmv', $vet_id ); ?></span>
+				 </div>
+				<div class="vet-email">
 	               E-mail:
 	               <span class="bold-font"><?= get_the_author_meta( 'user_email', $vet_id ); ?></span>
 				 </div>
@@ -279,6 +284,10 @@ if (isset($_GET["delete_user"])) {
 								<input autofocus type="number" name="numero" placeholder="Número" value="<?= get_the_author_meta( 'numero', $vet_id ); ?>">
 						</div>
 
+						<div class="col-md-12">
+								<label>CRMV</label>
+								<input autofocus type="number" name="crmv" placeholder="CRMV" value="<?= get_the_author_meta( 'CRMV', $vet_id ); ?>">
+						</div>
 
 						<div class="col-md-12">
 								<label>Usuário</label>
