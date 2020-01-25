@@ -4,9 +4,13 @@ if (!is_user_logged_in()){
 	auth_redirect();
 }
 
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && $_GET['consulta_id'] && $_GET['delete_consulta']) {
+	wp_delete_post($_GET['consulta_id']);
+	MB_Relationships_API::delete( $animal_id, $_GET['consulta_id'], 'animal_to_consulta');
+	wp_redirect(home_url() . "/animal/" . $_GET['animal_id']);
+}
+
 get_header();
-
-
 
 ?>
 
@@ -21,10 +25,25 @@ get_header();
 
 
 			<div class="actions col-md-2">
+				<?php
+				$animal_id = 0;
+				$connected = new WP_Query( array(
+					'relationship' => array(
+					   'id'   => 'animal_to_consulta',
+					   'to'   => get_the_ID(),
+					),
+					'nopaging'     => true,
+				) );
+				while ($connected->have_posts()) :
+				$connected->the_post();
+					$animal_id = get_the_ID();
+				endwhile;
+				wp_reset_postdata();
+
+				?>
 
 				<?php if( !(get_post_status() == 'trash') ) : ?>
-
-					<a onclick="return confirm('Tem certeza que deseja excluir essa consulta?')" href="<?php echo get_delete_post_link( get_the_ID() ); ?>">
+					<a onclick="return confirm('Tem certeza que deseja excluir essa consulta?')" href="?consulta_id=<?= get_the_ID()?>&delete_consulta=true&animal_id=<?= $animal_id ?>">
 						<i class="fas fa-trash"></i>
 					</a>
 

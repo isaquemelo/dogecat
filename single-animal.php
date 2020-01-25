@@ -125,13 +125,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 				wp_delete_post($_GET['consulta_id']);
 			} else {
 				echo "Sucesso.";
+				MB_Relationships_API::add( get_the_ID(), $_GET['consulta_id'], 'animal_to_consulta' );
 			}
 
 			wp_reset_postdata();
 
 
 		} else {
-			echo "Tempo de carencia ainda não atendido. O usuario possui " . $time_since_registred . " dias.";
+			echo "Tempo de carencia ainda não atendido. O usuário possui " . $time_since_registred . " dias.";
 			wp_delete_post($_GET['consulta_id']);
 		}
 
@@ -141,7 +142,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 		wp_delete_post($_GET['consulta_id']);
 	}
 
-	MB_Relationships_API::add( get_the_ID(), $_GET['consulta_id'], 'animal_to_consulta' );
+
 }
 
 
@@ -388,9 +389,11 @@ get_header();
             </div>
 
             <div class="list-header col-md-12">
-                <div class="col-md-2">Cód.</div>
-                <div class="col-md-3">Data</div>
-                <div class="col-md-6">Procedimentos</div>
+                <div class="col-md-1">Cód.</div>
+				<div class="col-md-2">Data</div>
+				<div class="col-md-3"> Tipo </div>
+				<div class="col-md-6">Procedimentos</div>
+
             </div>
             <?php endif; ?>
 
@@ -412,8 +415,9 @@ get_header();
 				 while ( $connected->have_posts() ) : $connected->the_post();
 						 ?>
                 <a href="<?php the_permalink(); ?>" class="single-consulta-item col-md-12">
-                    <div class="col-md-2 no-padding"><?php echo get_the_ID(); ?></div>
-                    <div class="col-md-3 no-padding"><?= get_the_date('d/m/Y H:i') . "h" ?></div>
+                    <div class="col-md-1 no-padding"><?php echo get_the_ID(); ?></div>
+					<div class="col-md-2 no-padding"><?= get_the_date('d/m/Y') ?></div>
+					<div class="col-md-3 no-padding"> <?php the_field('tipo_de_consulta'); ?> </div>
                     <div class="col-md-6 no-padding"><?php the_field('procedimentos'); ?></div>
 
 
