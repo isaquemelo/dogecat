@@ -33,11 +33,12 @@ get_header();
 						<div class="col-md-1">Plano</div>
 				</div>
 
+
 				<?php
 					$temp = $wp_query;
 			  		$wp_query = null;
 			  		$wp_query = new WP_Query();
-			  		$wp_query->query('showposts=20&post_type=animal'.'&paged='.$paged);
+			  		$wp_query->query('order=DESC&orderby=date&showposts=20&post_type=animal'.'&paged='.$paged);
 
 				?>
 

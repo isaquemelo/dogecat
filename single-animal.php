@@ -4,6 +4,37 @@ if (!is_user_logged_in()){
 	auth_redirect();
 }
 
+$plans = [
+	'Plano A' => 1,
+	'Plano B' => 2,
+	'Plano C' => 3,
+	'Plano D' => 3, //retirar versão final
+];
+
+$consulta_types = [
+	"Consultas urgência - emergência" => 1,
+	"Consulta clinico geral" => 2,
+	"Consulta especialista" => 3,
+	"Atendimento domiciliar" => 4,
+];
+
+
+// consulta_id => time_to_use
+$consulta_time_to_allow = [
+	1 => 30,
+	2 => 30,
+	3 => 60,
+	4 => 60,
+];
+
+// plan_id => [...consulta_types_allowed]
+$plan_allow = [
+	1 => [1, 2, 3, 4],
+	2 => [1, 2, 4],
+	3 => [2]
+];
+
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 	if(isset($_POST['submitted']) && isset($_POST['post_nonce_field']) && wp_verify_nonce($_POST['post_nonce_field'], 'post_nonce')) {
 		$animal = array(
@@ -29,7 +60,87 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 		}
 	}
 
-} else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+} else if ($_SERVER['REQUEST_METHOD'] === 'GET' && $_GET['consulta_id']) {
+	// Getting ready
+	function dateDiffInDays($date1, $date2)	{
+		// Calulating the difference in timestamps
+		$diff = strtotime($date2) - strtotime($date1);
+
+		// 1 day = 24 hours
+		// 24 * 60 * 60 = 86400 seconds
+		return abs($diff / 86400);
+	}
+
+
+	$animal_register_day = get_the_date("d-m-Y", get_the_ID());
+	$animal_plan = get_field('plano');
+
+	$time_since_registred = date_diff(date_create($animal_register_day), date_create(date("d-m-Y")));
+	$time_since_registred =  intval($time_since_registred->format('%R%a'));
+
+	$consulta_type = get_post_meta( $_GET['consulta_id'], 'tipo_de_consulta', true );
+
+
+	// verificar se o plano comporta a consulta
+	$consulta_id = $consulta_types[$consulta_type];
+	$plan_id = $plans[$animal_plan];
+	$supported_consultas = $plan_allow[$plan_id];
+
+	if (in_array($consulta_id, $supported_consultas)) {
+		// o plano comporta a consulta
+		if ($time_since_registred >= $consulta_time_to_allow[$consulta_id]) {
+			// o tempo de carencia já passou
+			// verificar se ele ja realizou uma consulta no intervalo de dias limite
+
+			$args = array(
+				'post_type' => 'consulta',
+
+				'relationship' => array(
+					'id'   => 'animal_to_consulta',
+					'from' => get_the_ID(), // You can pass object ID or full object
+				),
+
+				'meta_query' => array(
+					array(
+						'key' => 'tipo_de_consulta',
+						'value' => $consulta_type,
+						'compare' => '=',
+					)
+				),
+
+				'date_query'    => array(
+					'column'  => 'post_date',
+					'after'   => '- ' . $consulta_time_to_allow[$consulta_id] .' days'
+				),
+
+				'post__not_in' => array($_GET['consulta_id']), // exclui post atual da lista
+
+			 );
+
+
+			$query = new WP_Query($args);
+
+			if ($query->found_posts >= 1) {
+				echo "Intervalo entre as consultas do tipo não foi atendido.";
+				wp_delete_post($_GET['consulta_id']);
+			} else {
+				echo "Sucesso.";
+			}
+
+			wp_reset_postdata();
+
+
+		} else {
+			echo "Tempo de carencia ainda não atendido. O usuario possui " . $time_since_registred . " dias.";
+			wp_delete_post($_GET['consulta_id']);
+		}
+
+	} else {
+		// o plano nao comporta o tipo de consulta selecionado
+		echo "o plano nao comporta o tipo de consulta selecionado";
+		wp_delete_post($_GET['consulta_id']);
+	}
+
 	MB_Relationships_API::add( get_the_ID(), $_GET['consulta_id'], 'animal_to_consulta' );
 }
 
@@ -93,7 +204,7 @@ get_header();
 
 				while ( $connected->have_posts() ) : $connected->the_post();
 						$post_procedures = get_field('procedimentos');
-						$field = get_field('data');
+						$field = get_the_date('d/m/Y H:i') . "h";
 						$field = substr($field, 0, 10);
 						$field = explode("/", $field );
 
@@ -122,14 +233,19 @@ get_header();
                 </div>
 
                 <div class="col-md-12">
-                    <span class="cota-info"> O usuário realizou: </span>
+					<?php if (count($procedures) >= 1): ?>
+						<span class="cota-info"> O usuário realizou: </span>
+
+					<?php else: ?>
+						<span class="cota-info"> O usuário não realizou nenhuma ação. </span>
+					<?php endif; ?>
                 </div>
 
                 <div class="col-md-12">
-					<?php foreach ($procedures as $key=>$value): ?>
+                    <?php foreach ($procedures as $key=>$value): ?>
                     <span class="cota-cota"> <?= $value  . " - " . $key ?> </span>
-					<br>
-					<?php endforeach; ?>
+                    <br>
+                    <?php endforeach; ?>
                 </div>
 
             </div>
@@ -155,14 +271,7 @@ get_header();
                     <i class="fas fa-edit"></i>
                 </a>
 
-				<?php
-						$plans = [
-							'Plano A' => 1,
-							'Plano B' => 2,
-							'Plano C' => 3,
-							'Plano D' => 3, //retirar versão final
-						];
-
+                <?php
 						$plans_page_id = 211;
 						$plans_redirect = add_query_arg( 'plano', $plans[get_field('plano')], get_permalink(
 							$plans_page_id + $_POST['_wp_http_referer'] ) );
@@ -170,8 +279,9 @@ get_header();
 
 				?>
 
-				<a href="JavaScript:window.open(<?= "'" . $plans_redirect . "'" ?>,'popUpWindow','height=500,width=500,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes')" >
-                	<i class="fas fa-info-circle"></i>
+                <a
+                    href="JavaScript:window.open(<?= "'" . $plans_redirect . "'" ?>,'popUpWindow','height=500,width=500,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes')">
+                    <i class="fas fa-info-circle"></i>
                 </a>
 
                 <a href="" onclick="print()">
@@ -186,6 +296,9 @@ get_header();
 
 
         <?php else: ?>
+		<script>
+		alert("Lembrete: Verifique se o procedimento é aceito pelo plano e se está no intervalo de uso.")
+		</script>
         <div class="content-title">
             <span>Nova consulta</span>
         </div>
@@ -287,17 +400,20 @@ get_header();
 
                 <?php if (!$is_consulta):
 				 $connected = new WP_Query( array(
+						'orderby' => 'date',
+						'order'   => 'DESC',
 						 'relationship' => array(
 								 'id'   => 'animal_to_consulta',
 								 'from' => get_the_ID(), // You can pass object ID or full object
 						 ),
 						 'nopaging'     => true,
+
 				 ) );
 				 while ( $connected->have_posts() ) : $connected->the_post();
 						 ?>
                 <a href="<?php the_permalink(); ?>" class="single-consulta-item col-md-12">
                     <div class="col-md-2 no-padding"><?php echo get_the_ID(); ?></div>
-                    <div class="col-md-3 no-padding"><?php the_field('data'); ?></div>
+                    <div class="col-md-3 no-padding"><?= get_the_date('d/m/Y H:i') . "h" ?></div>
                     <div class="col-md-6 no-padding"><?php the_field('procedimentos'); ?></div>
 
 
@@ -334,6 +450,8 @@ get_header();
 						'post_id'		=> 'new_post',
 						'post_title'	=> false,
 						'post_content'	=> false,
+						'submit_value' => 'Cadastrar consulta',
+						'updated_message' => 'Consulta cadastrada',
 						'new_post'		=> array(
 							'post_type'		=> 'consulta',
 							'post_status'	=> 'publish',
@@ -443,8 +561,9 @@ get_header();
 <script>
 // Popup window function
 function basicPopup(url) {
-	popupWindow = window.open(url,'popUpWindow','height=500,width=500,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes');
+    popupWindow = window.open(url, 'popUpWindow',
+        'height=500,width=500,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes'
+    );
 }
-
 </script>
 <?php get_footer(); ?>
