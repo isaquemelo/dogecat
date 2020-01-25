@@ -192,7 +192,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
 		<section>
 			<div class="content">
-				Dúvidas na escolha de veterinario? Ligue-nos:
+				Dúvidas na escolha de veterinário? Ligue-nos:
 				(083) 9 9999-9999
 
 			</div>
