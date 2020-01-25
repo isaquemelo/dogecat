@@ -71,6 +71,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 		return abs($diff / 86400);
 	}
 
+	function showMessageandRedirect($message) {
+		echo "<script>";
+		echo "alert('" . $message . "');" ;
+		echo "</script>";
+		//wp_redirect(home_url() . "/animal/" . get_the_ID());
+	}
 
 	$animal_register_day = get_the_date("d-m-Y", get_the_ID());
 	$animal_plan = get_field('plano');
@@ -121,10 +127,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 			$query = new WP_Query($args);
 
 			if ($query->found_posts >= 1) {
-				echo "Intervalo entre as consultas do tipo não foi atendido.";
+				//echo "Intervalo entre as consultas do tipo não foi atendido.";
 				wp_delete_post($_GET['consulta_id']);
+				showMessageandRedirect("Intervalo entre as consultas do tipo não foi atendido.");
+
 			} else {
-				echo "Sucesso.";
+				// echo "Sucesso.";
 				MB_Relationships_API::add( get_the_ID(), $_GET['consulta_id'], 'animal_to_consulta' );
 			}
 
@@ -132,14 +140,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 
 		} else {
-			echo "Tempo de carencia ainda não atendido. O usuário possui " . $time_since_registred . " dias.";
+			//echo "Tempo de carencia ainda não atendido. O usuário possui " . $time_since_registred . " dias.";
 			wp_delete_post($_GET['consulta_id']);
+			showMessageandRedirect("Tempo de carencia ainda não atendido. O usuário possui " . $time_since_registred . " dias.");
+
 		}
 
 	} else {
 		// o plano nao comporta o tipo de consulta selecionado
-		echo "o plano nao comporta o tipo de consulta selecionado";
+		//echo "o plano nao comporta o tipo de consulta selecionado";
+		showMessageandRedirect("O plano não comporta o tipo de consulta selecionado");
 		wp_delete_post($_GET['consulta_id']);
+		wp_redirect(home_url() . "/animal/" . get_the_ID());
 	}
 
 
@@ -298,13 +310,14 @@ get_header();
 
         <?php else: ?>
 		<script>
-		alert("Lembrete: Verifique se o procedimento é aceito pelo plano e se está no intervalo de uso.")
+			//alert("Lembrete: Verifique se o procedimento é aceito pelo plano e se está no intervalo de uso.")
 		</script>
         <div class="content-title">
             <span>Nova consulta</span>
         </div>
         <?php endif; ?>
 
+		<br>
 
         <div class="animal-dados">
             <div class="animal-data subtitle">Dados:</div>
@@ -367,7 +380,13 @@ get_header();
 
                 <div class="animal-celular">
                     Celular: <span class="bold-font"><?php the_field('celular'); ?></span>
-                </div>
+				</div>
+
+
+				<div class="animal-data">
+					Dia de Cadastro: <span class="bold-font"><?= get_the_date("d/m/Y", get_the_ID()) ?></span>
+				</div>
+				<br>
 
             </div>
 
@@ -537,7 +556,10 @@ get_header();
 
         <div class="animal-celular">
             Celular: <span class="bold-font"><?php the_field('celular'); ?></span>
-        </div>
+		</div>
+
+
+
 
     </div>
 

@@ -8403,37 +8403,37 @@ img#wpstats {
   border-left: 0;
 }
 .widget_tag_cloud a:nth-child(1) {
-  font-size: 27px !important;
+  font-size: 19px !important;
 }
 .widget_tag_cloud a:nth-child(2) {
   font-size: 14px !important;
 }
 .widget_tag_cloud a:nth-child(3) {
-  font-size: 24px !important;
+  font-size: 18px !important;
 }
 .widget_tag_cloud a:nth-child(4) {
-  font-size: 20px !important;
+  font-size: 27px !important;
 }
 .widget_tag_cloud a:nth-child(5) {
-  font-size: 22px !important;
+  font-size: 25px !important;
 }
 .widget_tag_cloud a:nth-child(6) {
-  font-size: 32px !important;
+  font-size: 15px !important;
 }
 .widget_tag_cloud a:nth-child(7) {
-  font-size: 29px !important;
+  font-size: 23px !important;
 }
 .widget_tag_cloud a:nth-child(8) {
-  font-size: 13px !important;
+  font-size: 29px !important;
 }
 .widget_tag_cloud a:nth-child(9) {
-  font-size: 22px !important;
+  font-size: 27px !important;
 }
 .widget_tag_cloud a:nth-child(10) {
   font-size: 19px !important;
 }
 .widget_tag_cloud a:nth-child(11) {
-  font-size: 25px !important;
+  font-size: 16px !important;
 }
 .widget_tag_cloud a:nth-child(12) {
   font-size: 18px !important;
@@ -8541,6 +8541,15 @@ select {
   text-transform: uppercase;
   margin-top: 15px;
   width: 100%;
+}
+
+select, input[type=submit] {
+  border: 2px solid #f9bb4b;
+  padding: 10px 15px;
+  height: 46px;
+  border-radius: 5px;
+  outline: none;
+  background-color: white;
 }
 
 .page-template-template-cadastrar-veterinario input[type=text], .page-template-template-cadastrar-veterinario input[type=number], .page-template-template-cadastrar-veterinario textarea, .page-template-template-cadastrar-veterinario input[type=email], .page-template-template-cadastrar-veterinario select, .page-template-template-cadastrar-veterinario input[type=password], .page-template-template-cadastrar-veterinario input[type=submit], .page-template-template-cadastrar-veterinario input[type=tel], .page-template-template-veterinario input[type=text], .page-template-template-veterinario input[type=number], .page-template-template-veterinario textarea, .page-template-template-veterinario input[type=email], .page-template-template-veterinario select, .page-template-template-veterinario input[type=password], .page-template-template-veterinario input[type=submit], .page-template-template-veterinario input[type=tel] {

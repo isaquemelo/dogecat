@@ -147,7 +147,7 @@ get_header();
 							<div class="list-data col-md-12 no-padding">
 									<a href="<?php the_permalink() ?>">
 										<div class="col-md-2">#<?php echo get_the_ID(); ?></div>
-										<div class="col-md-4"><?php echo explode(" ", get_field('data'))[0]; ?></div>
+										<div class="col-md-4"><?= get_the_date("d/m/Y", get_the_ID()) ?></div>
 										<div class="col-md-6" ><?php the_field('procedimentos'); ?></div>
 									</a>
 							</div>

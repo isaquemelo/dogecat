@@ -157,6 +157,15 @@ get_header();
         	<div class="dados-container">
 				<div class="list-header col-md-12 no-padding">
 					<br> <br>
+					<h4> <strong>	Responsável: </strong> </h4>
+
+					<div class="procedimentos">
+						<?php the_author(); ?>
+					</div>
+				</div>
+
+				<div class="list-header col-md-12 no-padding">
+					<br> <br>
 					<h4> <strong>	Procedimentos: </strong> </h4>
 
 					<div class="procedimentos">
@@ -166,10 +175,19 @@ get_header();
 
 				<div class="list-header col-md-12 no-padding">
 					<br> <br>
+					<h4> <strong>	Tipo: </strong> </h4>
+
+					<div class="procedimentos">
+						<?php the_field('tipo_de_consulta'); ?>
+					</div>
+				</div>
+
+				<div class="list-header col-md-12 no-padding">
+					<br> <br>
 					<h4> <strong>	Data: </strong> </h4>
 
 					<div class="procedimentos">
-						<?php the_field('data'); ?>
+						<?= get_the_date("d/m/Y", get_the_ID()) ?>
 					</div>
 				</div>
 			</div>
