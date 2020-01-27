@@ -140,7 +140,7 @@ if (isset($_GET["delete_user"])) {
 				</a>
 
 				<?php
-					$edit_page_id = 121;
+					$edit_page_id = 27;
 					$edit_post = add_query_arg( 'animal', get_the_ID(), get_permalink(
 						$edit_page_id+ $_POST['_wp_http_referer'] ) );
 				?>

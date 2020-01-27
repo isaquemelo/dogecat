@@ -277,7 +277,7 @@ get_header();
                 <?php endif; ?>
 
                 <?php
-						$edit_page_id = 121;
+						$edit_page_id = 27;
 						$edit_post = add_query_arg( 'animal', get_the_ID(), get_permalink(
 							$edit_page_id+ $_POST['_wp_http_referer'] ) );
 				?>
@@ -287,7 +287,7 @@ get_header();
                 </a>
 
                 <?php
-						$plans_page_id = 211;
+						$plans_page_id = 37;
 						$plans_redirect = add_query_arg( 'plano', $plans[get_field('plano')], get_permalink(
 							$plans_page_id + $_POST['_wp_http_referer'] ) );
 
@@ -301,7 +301,7 @@ get_header();
 
 				<?php
 
-				$carteirinha_page_id = 312;
+				$carteirinha_page_id = 25;
 				$carteirinha_redirect = add_query_arg( 'animal_id', get_the_ID(), get_permalink(
 					$carteirinha_page_id + $_POST['_wp_http_referer'] ) );
 
@@ -326,7 +326,7 @@ get_header();
             <span>Nova consulta</span>
 		</div>
 		<?php
-				$adiciona_postdata_page_id = 309;
+				$adiciona_postdata_page_id = 39;
 				$edit_post = add_query_arg( 'animal', get_the_ID(), get_permalink(
 											$adiciona_postdata_page_id . $_POST['_wp_http_referer'] ) );
 			?>
