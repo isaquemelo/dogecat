@@ -53,7 +53,7 @@ get_header();
 					'updated_message' => 'Animal cadastrado',
 					'return' => '%post_url%',
 					'instruction_placement' => 'field',
-					'form' => false,
+					'form' => true,
  					'new_post'		=> array(
 						'post_type'		=> 'animal',
 						'post_status'	=> 'publish',
