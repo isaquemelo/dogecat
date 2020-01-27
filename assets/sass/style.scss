@@ -20,10 +20,13 @@ Text Domain: odin
 
 
 @import
-        "variables",           // Theme       Custom Variables
+
+		"variables",           // Theme       Custom Variables
+
         "bootstrap/bootstrap", // Bootstrap   Styles Core
         "wordpress/wordpress", // WordPress   Styles Core
-        //"woocommerce",       // WooCommerce Styles Core
+		//"woocommerce",       // WooCommerce Styles Core
+		"layout",
         "odin/core",           // Odin        Styles Core
         "pages/login",         // Theme       Custom Layout
 		"pages/single-animal",
@@ -32,8 +35,8 @@ Text Domain: odin
 		"pages/cadatro_veterinario",
 		"pages/single-veterinario",
 		"pages/nova-consulta",
-		"pages/index",
-        "layout"
+		"pages/index"
+
 
 
 ;

@@ -10,6 +10,12 @@
 			border-radius: 3px;
 			font-weight: bold;
 			text-decoration: none;
+			margin-bottom: 10px;
+
+			@include mobile {
+				width: 100%;
+				text-align: center;
+			}
 		}
 
 		.nova-consulta {
@@ -20,6 +26,12 @@
 			border-radius: 3px;
 			font-weight: bold;
 			text-decoration: none;
+			margin-bottom: 10px;
+
+			@include mobile {
+				width: 100%;
+				text-align: center;
+			}
 		}
 	}
 
@@ -60,5 +72,12 @@
 	  .list-data, .list-data div {
 		color: $grey;
 		padding-top: 6px;
+	  }
+
+
+	  @include mobile {
+		  .animal-section, .consulta-section {
+			  display: none;
+		  }
 	  }
 }
