@@ -8403,40 +8403,40 @@ img#wpstats {
   border-left: 0;
 }
 .widget_tag_cloud a:nth-child(1) {
-  font-size: 26px !important;
+  font-size: 23px !important;
 }
 .widget_tag_cloud a:nth-child(2) {
-  font-size: 24px !important;
+  font-size: 28px !important;
 }
 .widget_tag_cloud a:nth-child(3) {
-  font-size: 30px !important;
+  font-size: 26px !important;
 }
 .widget_tag_cloud a:nth-child(4) {
-  font-size: 23px !important;
+  font-size: 21px !important;
 }
 .widget_tag_cloud a:nth-child(5) {
-  font-size: 23px !important;
+  font-size: 15px !important;
 }
 .widget_tag_cloud a:nth-child(6) {
-  font-size: 27px !important;
-}
-.widget_tag_cloud a:nth-child(7) {
-  font-size: 13px !important;
-}
-.widget_tag_cloud a:nth-child(8) {
   font-size: 29px !important;
 }
+.widget_tag_cloud a:nth-child(7) {
+  font-size: 24px !important;
+}
+.widget_tag_cloud a:nth-child(8) {
+  font-size: 18px !important;
+}
 .widget_tag_cloud a:nth-child(9) {
-  font-size: 16px !important;
+  font-size: 14px !important;
 }
 .widget_tag_cloud a:nth-child(10) {
-  font-size: 13px !important;
+  font-size: 28px !important;
 }
 .widget_tag_cloud a:nth-child(11) {
-  font-size: 20px !important;
+  font-size: 16px !important;
 }
 .widget_tag_cloud a:nth-child(12) {
-  font-size: 16px !important;
+  font-size: 25px !important;
 }
 
 .wp-video-shortcode {
@@ -8533,6 +8533,11 @@ div#primary .content-title {
   font-size: 26px;
   color: #f9bb4b;
 }
+@media (max-width: 1024px) {
+  div#primary .content-title {
+    width: 100%;
+  }
+}
 div#primary .content-title:after {
   display: block;
   content: "";
@@ -8540,6 +8545,12 @@ div#primary .content-title:after {
   height: 3px;
   background: #f9bb4b;
   margin-bottom: 15px;
+}
+@media (max-width: 1024px) {
+  div#primary .cota-mensal {
+    width: 100%;
+    margin-bottom: 30px;
+  }
 }
 
 .cadastrar-animal .consulta-field {
@@ -8608,6 +8619,11 @@ div#primary .content-title:after {
 }
 .single-animal .content-title {
   border-right: 2px solid #f9bb4b;
+}
+@media (max-width: 767px) {
+  .single-animal .content-title {
+    border: unset;
+  }
 }
 .single-animal .animal-header {
   display: flex;
@@ -8767,6 +8783,11 @@ select {
   max-width: none !important;
 }
 
+@media (max-width: 767px) {
+  .single-animal .animal-header {
+    flex-flow: column;
+  }
+}
 .single-animal .actions a {
   color: #f9bb4b;
   font-size: 25px;

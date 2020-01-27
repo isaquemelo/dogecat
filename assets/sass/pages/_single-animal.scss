@@ -1,5 +1,9 @@
 .single-animal {
-
+	.animal-header {
+		@include mobile {
+			flex-flow: column;
+		}
+	}
 
 	.actions {
 		a {
