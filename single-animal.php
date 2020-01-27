@@ -16,6 +16,7 @@ $consulta_types = [
 	"Consulta clinico geral" => 2,
 	"Consulta especialista" => 3,
 	"Atendimento domiciliar" => 4,
+	"Procedimento" => 5,
 ];
 
 
@@ -25,13 +26,14 @@ $consulta_time_to_allow = [
 	2 => 30,
 	3 => 60,
 	4 => 60,
+	5 => 30,
 ];
 
 // plan_id => [...consulta_types_allowed]
 $plan_allow = [
-	1 => [1, 2, 3, 4],
-	2 => [1, 2, 4],
-	3 => [2]
+	1 => [1, 2, 3, 4, 5],
+	2 => [1, 2, 4, 5],
+	3 => [2, 5]
 ];
 
 
@@ -126,7 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 			$query = new WP_Query($args);
 
-			if ($query->found_posts >= 1) {
+			if ($query->found_posts >= 1 && !($consulta_id == 5)) {
 				//echo "Intervalo entre as consultas do tipo não foi atendido.";
 				wp_delete_post($_GET['consulta_id']);
 				showMessageandRedirect("Intervalo entre as consultas do tipo não foi atendido.");
