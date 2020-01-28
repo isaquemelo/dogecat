@@ -115,7 +115,7 @@ if (isset( $_POST["user"] ) && wp_verify_nonce($_POST['pippin_register_nonce'], 
 if (isset($_GET["delete_user"])) {
 	//echo "asdssasd";
 	wp_delete_user($vet_id);
-	wp_redirect('/dogecat/');
+	wp_redirect(home_url());
 	exit;
 }
 
