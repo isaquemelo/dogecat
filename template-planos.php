@@ -948,62 +948,189 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 <?php else: ?>
 
 
-<table class="table table-striped table-bordered">
-    <tr>
-        <td></td>
-        <td colspan="3">PLANO PET LIGHT</td>
-        <td colspan="2"></td>
-    </tr>
+	<table class="table table-striped table-bordered">
+		<tr>
+			<td colspan="4">PLANO PET LIGHT</td>
+		</tr>
+		<tr>
+			<td>CONSULTAS</td>
+			<td>CARÊNCIA</td>
+			<td>PERÍODO/DIAS</td>
+			<td>LIMITE DE USOANO</td>
+		</tr>
+		<tr>
+			<td>Consulta clínico geral</td>
+			<td style="text-align: right">30</td>
+			<td style="text-align: right">30</td>
+			<td></td>
+		</tr>
 
-    <tr>
-        <td colspan="2">Fosfatase alcalina</td>
-        <td style="text-align: right" colspan="2">30</td>
-        <td style="text-align: right">21</td>
-        <td style="text-align: right">01</td>
-    </tr>
-    <tr>
-        <td colspan="2">Fósforo</td>
-        <td style="text-align: right" colspan="2">30</td>
-        <td style="text-align: right">21</td>
-        <td style="text-align: right">01</td>
-    </tr>
-    <tr>
-        <td colspan="2">GGT</td>
-        <td style="text-align: right" colspan="2">30</td>
-        <td style="text-align: right">21</td>
-        <td style="text-align: right">01</td>
-    </tr>
-    <tr>
-        <td colspan="2">Glicose</td>
-        <td style="text-align: right" colspan="2">30</td>
-        <td style="text-align: right">21</td>
-        <td style="text-align: right">01</td>
-    </tr>
-    <tr>
-        <td colspan="2">Parasitológico de fezes</td>
-        <td style="text-align: right" colspan="2">30</td>
-        <td style="text-align: right">21</td>
-        <td style="text-align: right">01</td>
-    </tr>
-    <tr>
-        <td colspan="2">Potássio</td>
-        <td style="text-align: right" colspan="2">30</td>
-        <td style="text-align: right">21</td>
-        <td style="text-align: right">01</td>
-    </tr>
-    <tr>
-        <td colspan="2">PPT</td>
-        <td style="text-align: right" colspan="2">30</td>
-        <td style="text-align: right">21</td>
-        <td style="text-align: right">01</td>
-    </tr>
-    <tr>
-        <td colspan="2">Uréia</td>
-        <td style="text-align: right" colspan="2">30</td>
-        <td style="text-align: right">21</td>
-        <td style="text-align: right">01</td>
-    </tr>
-</table>
+		<tr>
+			<td>VACINAS</td>
+			<td>CARÊNCIA</td>
+			<td>PERÍODO/DIAS</td>
+			<td>LIMITE DE USOANO</td>
+		</tr>
+		<tr>
+			<td>Vacina de giárdia</td>
+			<td style="text-align: right">60</td>
+			<td style="text-align: right">60</td>
+			<td style="text-align: right">01</td>
+		</tr>
+		<tr>
+			<td>Gripe canina - dose 1</td>
+			<td style="text-align: right">52</td>
+			<td style="text-align: right">21</td>
+			<td style="text-align: right">01</td>
+		</tr>
+		<tr>
+			<td>Gripe canina - dose 2</td>
+			<td style="text-align: right">74</td>
+			<td style="text-align: right">21</td>
+			<td style="text-align: right">01</td>
+		</tr>
+		<tr>
+			<td>Gripe adulto - dose única</td>
+			<td style="text-align: right">60</td>
+			<td style="text-align: right">60</td>
+			<td style="text-align: right">01</td>
+		</tr>
+		<tr>
+			<td>Vacina de raiva</td>
+			<td style="text-align: right">30</td>
+			<td style="text-align: right">30</td>
+			<td style="text-align: right">01</td>
+		</tr>
+		<tr>
+			<td>Vacina polivalente ( V8 ou V10)</td>
+			<td style="text-align: right">30</td>
+			<td style="text-align: right">21</td>
+			<td style="text-align: right">01</td>
+		</tr>
+		<tr>
+			<td>Polivalente (V8 ou V10) reforço 1</td>
+			<td style="text-align: right">52</td>
+			<td style="text-align: right">21</td>
+			<td style="text-align: right">01</td>
+		</tr>
+		<tr>
+			<td>Polivalente (V8 ou V10) reforço 2</td>
+			<td style="text-align: right">74</td>
+			<td style="text-align: right">21</td>
+			<td style="text-align: right">01</td>
+		</tr>
+		<tr>
+			<td>Polivalente adulto (V8 ou V10)</td>
+			<td style="text-align: right">60</td>
+			<td style="text-align: right">60</td>
+			<td style="text-align: right">01</td>
+		</tr>
+		<tr>
+			<td>EXAMES LABORATORIAIS</td>
+			<td>CARÊNCIA</td>
+			<td>PERÍODO/DIAS</td>
+			<td>LIMITE DE USOANO</td>
+		</tr>
+		<tr>
+			<td>ALT (TGP)</td>
+			<td style="text-align: right">30</td>
+			<td style="text-align: right">21</td>
+			<td style="text-align: right">01</td>
+		</tr>
+		<tr>
+			<td>AST (TGO)</td>
+			<td style="text-align: right">30</td>
+			<td style="text-align: right">21</td>
+			<td style="text-align: right">01</td>
+		</tr>
+		<tr>
+			<td>Albumina</td>
+			<td style="text-align: right">30</td>
+			<td style="text-align: right">21</td>
+			<td style="text-align: right">01</td>
+		</tr>
+		<tr>
+			<td>Amilase</td>
+			<td style="text-align: right">30</td>
+			<td style="text-align: right">21</td>
+			<td style="text-align: right">01</td>
+		</tr>
+		<tr>
+			<td>Cálcio</td>
+			<td style="text-align: right">30</td>
+			<td style="text-align: right">21</td>
+			<td style="text-align: right">01</td>
+		</tr>
+		<tr>
+			<td>Colesterol</td>
+			<td style="text-align: right">30</td>
+			<td style="text-align: right">21</td>
+			<td style="text-align: right">01</td>
+		</tr>
+		<tr>
+			<td>Coleta por cistocentese (amostra de urina)</td>
+			<td style="text-align: right">30</td>
+			<td style="text-align: right">21</td>
+			<td style="text-align: right">01</td>
+		</tr>
+		<tr>
+			<td>Creatina</td>
+			<td style="text-align: right">30</td>
+			<td style="text-align: right">21</td>
+			<td style="text-align: right">01</td>
+		</tr>
+		<tr>
+			<td>Fosfatase alcalina</td>
+			<td style="text-align: right">30</td>
+			<td style="text-align: right">21</td>
+			<td style="text-align: right">01</td>
+		</tr>
+		<tr>
+			<td>Fósforo</td>
+			<td style="text-align: right">30</td>
+			<td style="text-align: right">21</td>
+			<td style="text-align: right">01</td>
+		</tr>
+		<tr>
+			<td>GGT</td>
+			<td style="text-align: right">30</td>
+			<td style="text-align: right">21</td>
+			<td style="text-align: right">01</td>
+		</tr>
+		<tr>
+			<td>Glicose</td>
+			<td style="text-align: right">30</td>
+			<td style="text-align: right">21</td>
+			<td style="text-align: right">01</td>
+		</tr>
+		<tr>
+			<td>Parasitológico de fezes</td>
+			<td style="text-align: right">30</td>
+			<td style="text-align: right">21</td>
+			<td style="text-align: right">01</td>
+		</tr>
+	</table>
+	<table class="table table-striped table-bordered">
+		<tr>
+			<td>Potássio</td>
+			<td style="text-align: right">30</td>
+			<td style="text-align: right">21</td>
+			<td style="text-align: right">01</td>
+		</tr>
+		<tr>
+			<td>PPT</td>
+			<td style="text-align: right">30</td>
+			<td style="text-align: right">21</td>
+			<td style="text-align: right">01</td>
+		</tr>
+		<tr>
+			<td>Uréia</td>
+			<td style="text-align: right">30</td>
+			<td style="text-align: right">21</td>
+			<td style="text-align: right">01</td>
+		</tr>
+
+	</table>
 
 
 
