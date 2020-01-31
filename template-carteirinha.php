@@ -207,8 +207,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 			<div class="content">
 				Dúvidas na escolha do veterinário? Temos uma lista dos mais elogiados pelos nosso próprios clientes. Ligue-nos:
 				(083) 3201-5966  /
-				(083) 9 8720-7140 /
-				(083) 9 9827-3543
+				(083) 9 8720-7140
 
 			</div>
 
