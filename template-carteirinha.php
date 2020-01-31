@@ -131,7 +131,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 		font-weight: bold;
 		text-align: center;
 		padding: -0 20px;
-		color: #f9bb4b;
+		color: rgba(0,0,0,1);
 	}
 
 	.carteirinha_wrapper.verso {
@@ -205,9 +205,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
 		<section>
 			<div class="content">
-				Dúvidas na escolha do veterinário? Temos uma lista dos mais elogiados pelos nosso próprios clientes. Ligue-nos:
-				(083) 3201-5966  /
-				(083) 9 8720-7140
+				<strong>
+					Dúvidas na escolha do veterinário? Temos uma lista dos mais elogiados pelos nosso próprios clientes. Ligue-nos:
+					(083) 3201-5966  /
+					(083) 9 8720-7140
+				</strong>
 
 			</div>
 
