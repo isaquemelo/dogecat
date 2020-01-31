@@ -82,6 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 	$animal_register_day = get_the_date("d-m-Y", get_the_ID());
 	$animal_plan = get_field('plano');
 
+
 	$time_since_registred = date_diff(date_create($animal_register_day), date_create(date("d-m-Y")));
 	$time_since_registred =  intval($time_since_registred->format('%R%a'));
 
@@ -128,7 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 			$query = new WP_Query($args);
 
 			if ($query->found_posts >= 1 && !($consulta_id == 5)) {
-				//echo "Intervalo entre as consultas do tipo não foi atendido.";
+				// echo "Intervalo entre as consultas do tipo não foi atendido.";
 				wp_delete_post($_GET['consulta_id']);
 				showMessageandRedirect("Intervalo entre as consultas do tipo não foi atendido.");
 
@@ -141,7 +142,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 
 		} else {
-			//echo "Tempo de carencia ainda não atendido. O usuário possui " . $time_since_registred . " dias.";
+			// echo "Tempo de carencia ainda não atendido. O usuário possui " . $time_since_registred . " dias.";
 			wp_delete_post($_GET['consulta_id']);
 			showMessageandRedirect("Tempo de carencia ainda não atendido. O usuário possui " . $time_since_registred . " dias.");
 
@@ -149,10 +150,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 	} else {
 		// o plano nao comporta o tipo de consulta selecionado
-		//echo "o plano nao comporta o tipo de consulta selecionado";
-		showMessageandRedirect("O plano não comporta o tipo de consulta selecionado");
+		// echo "o plano nao comporta o tipo de consulta selecionado";
 		wp_delete_post($_GET['consulta_id']);
-		wp_redirect(home_url() . "/animal/" . get_the_ID());
+		showMessageandRedirect("O plano não comporta o tipo de consulta selecionado");
+		//wp_redirect(home_url() . "/animal/" . get_the_ID());
 	}
 
 
