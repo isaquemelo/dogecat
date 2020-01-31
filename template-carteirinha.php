@@ -206,7 +206,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 		<section>
 			<div class="content">
 				Dúvidas na escolha de veterinário? Ligue-nos:
-				(083) 9 9999-9999
+				(083) 3201-5966  /
+				(083) 9 8720-7140 /
+				(083) 9 9827-3543
 
 			</div>
 
