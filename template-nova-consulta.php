@@ -18,10 +18,9 @@ function a_post_exists($id) {
 
 
 $plans = [
-	'Plano A' => 1,
-	'Plano B' => 2,
-	'Plano C' => 3,
-	'Plano D' => 3, //retirar versão final
+	'Plano Pet Premium' => 1,
+	'Plano Pet Plus' => 2,
+	'Plano Pet Light' => 3,
 ];
 
 $consulta_types = [
